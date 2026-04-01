@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC32CL250M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EC32CL250M');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Let's Play All Guitar Lessons</title>
@@ -52,10 +43,10 @@ a{color:inherit;text-decoration:none}
 .track-link:hover{color:var(--accent)}
 .track.covered .track-name{color:var(--text)}
 footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:11px}
-.mobile-bar{display:none;position:sticky;top:52px;z-index:99;background:var(--surface2);border-bottom:1px solid var(--border);padding:8px 16px;gap:8px;align-items:center}
-.band-select{flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;outline:none}
+.mobile-bar{display:none;position:sticky;top:52px;z-index:99;background:var(--surface2);border-bottom:1px solid var(--border);padding:8px 16px;gap:8px;align-items:center;box-sizing:border-box;width:100%;overflow:hidden}
+.band-select{flex:1;min-width:0;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;outline:none;max-width:100%}
 .band-select:focus{border-color:var(--accent)}
-.toggle-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:7px 12px;border-radius:4px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;white-space:nowrap;transition:all .15s}
+.toggle-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:7px 10px;border-radius:4px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;white-space:nowrap;transition:all .15s;flex-shrink:0}
 .toggle-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(232,255,71,0.05)}
 .track.gap.hidden{display:none}
 @media(max-width:640px){.sidebar{display:none}.main{padding:16px}.band-title{font-size:28px}.mobile-bar{display:flex}}
