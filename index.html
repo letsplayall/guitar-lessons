@@ -39,8 +39,8 @@ a{color:inherit;text-decoration:none}
 .track.covered .track-dot{background:var(--covered)}
 .track.gap .track-dot{background:var(--border);border:1px solid #444}
 .track-name{flex:1;line-height:1.3}
-.track-link{color:var(--muted);font-size:11px;font-family:'IBM Plex Mono',monospace;flex-shrink:0;transition:color .15s}
-.track-link:hover{color:var(--accent)}
+.track-link{color:var(--accent);font-size:11px;font-family:'IBM Plex Mono',monospace;flex-shrink:0;transition:color .15s}
+.track-link:hover{color:#fff}
 .tab-link{color:#a78bfa;font-size:11px;font-family:'IBM Plex Mono',monospace;flex-shrink:0;margin-left:4px;transition:color .15s}
 .tab-link:hover{color:#c4b5fd}
 .track.covered .track-name{color:var(--text)}
@@ -55,7 +55,7 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 <body>
 <header class="site-header">
   <div class="site-logo">Let&#39;s Play All</div>
-  <div class="site-tagline">// guitar lessons by band &amp; album</div>
+  <div class="site-tagline">// Guitar Lessons</div>
 </header>
 <div class="mobile-bar">
   <select class="band-select" onchange="if(this.value){document.getElementById(this.value).scrollIntoView({behavior:'smooth'});this.value=''}">
