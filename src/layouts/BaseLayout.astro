@@ -148,6 +148,10 @@ const pathname = Astro.url.pathname;
     .nav-links a[aria-current="page"]::after { right: 0; }
     .nav-links a:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
 
+    @media (max-width: 640px) {
+      .nav-hide-mobile { display: none; }
+    }
+
     .nav-cta {
       flex-shrink: 0;
       display: flex;
@@ -298,8 +302,8 @@ const pathname = Astro.url.pathname;
         <li><a href="/" aria-current={pathname === '/' ? 'page' : undefined}>Home</a></li>
         <li><a href="/lessons" aria-current={pathname.startsWith('/lessons') ? 'page' : undefined}>Lessons</a></li>
         <li><a href="/tone" aria-current={pathname.startsWith('/tone') ? 'page' : undefined}>Tones</a></li>
-        <li><a href={SITE.youtube} target="_blank" rel="noopener">YouTube</a></li>
-        <li><a href="https://www.patreon.com/letsplayall" target="_blank" rel="noopener">Patreon</a></li>
+        <li class="nav-hide-mobile"><a href={SITE.youtube} target="_blank" rel="noopener">YouTube</a></li>
+        <li class="nav-hide-mobile"><a href="https://www.patreon.com/letsplayall" target="_blank" rel="noopener">Patreon</a></li>
       </ul>
     </div>
   </div>
