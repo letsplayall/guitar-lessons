@@ -451,10 +451,45 @@ const exportDate = exportedAt ? new Date(exportedAt).toLocaleDateString('en-AU',
     }
 
     /* Responsive */
+    /* ── MOBILE FILTER BAR ── */
+    .mobile-filter-bar {
+      display: none;
+    }
     @media (max-width: 768px) {
       .lessons-layout { grid-template-columns: 1fr; }
       .sidebar { display: none; }
       .main-content { padding: 24px 16px 60px; }
+
+      .stats-row { display: none; }
+      .header-actions { display: none; }
+
+      .mobile-filter-bar {
+        display: block;
+        position: sticky;
+        top: 80px;
+        z-index: 100;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+      }
+      .mobile-filter-select {
+        width: 100%;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text);
+        background: var(--surface2);
+        border: 1px solid var(--border2);
+        padding: 8px 12px;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a0a0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        cursor: pointer;
+      }
+      .mobile-filter-select:focus { outline: 2px solid var(--red); outline-offset: 2px; }
     }
   </style>
 
@@ -485,6 +520,18 @@ const exportDate = exportedAt ? new Date(exportedAt).toLocaleDateString('en-AU',
       </div>
     </div>
   </div>
+
+  <!-- MOBILE FILTER BAR -->
+  {hasData && (
+    <div class="mobile-filter-bar">
+      <select class="mobile-filter-select" id="mobile-band-filter" aria-label="Filter by band">
+        <option value="">All Bands</option>
+        {[...bands, ...various].sort((a, b) => a.name.localeCompare(b.name)).map(band => (
+          <option value={band.slug}>{band.name}</option>
+        ))}
+      </select>
+    </div>
+  )}
 
   <!-- MAIN LAYOUT -->
   <div class="lessons-layout">
@@ -690,4 +737,29 @@ const exportDate = exportedAt ? new Date(exportedAt).toLocaleDateString('en-AU',
   document.querySelectorAll('.sort-btn').forEach(btn => {
     btn.addEventListener('click', () => applySort(btn.dataset.sort ?? 'coverage'));
   });
+
+  // Mobile band filter
+  const mobileFilter = document.getElementById('mobile-band-filter');
+  if (mobileFilter) {
+    mobileFilter.addEventListener('change', () => {
+      const slug = mobileFilter.value;
+      const sections = getSections();
+      if (!slug) {
+        // Show all
+        sections.forEach(el => el.style.display = '');
+      } else {
+        sections.forEach(el => {
+          el.style.display = el.id === slug ? '' : 'none';
+        });
+        // Scroll to section, accounting for sticky nav + filter bar height
+        const target = document.getElementById(slug);
+        if (target) {
+          const navHeight = document.querySelector('.site-nav-wrap')?.offsetHeight ?? 80;
+          const filterHeight = mobileFilter.closest('.mobile-filter-bar')?.offsetHeight ?? 0;
+          const offset = target.getBoundingClientRect().top + window.scrollY - navHeight - filterHeight - 12;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      }
+    });
+  }
 </script>

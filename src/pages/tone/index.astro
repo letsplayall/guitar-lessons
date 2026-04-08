@@ -155,6 +155,46 @@ const bands = Object.entries(TONE_SETTINGS);
       .song-row { grid-template-columns: 1fr; }
       .pedals-row { justify-content: flex-start; }
     }
+
+    /* ── BAND FILTER BAR ── */
+    .band-filter-bar {
+      position: sticky;
+      top: 80px;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .band-filter-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .band-filter-inner::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 5px 12px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      flex-shrink: 0;
+    }
+    .filter-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .filter-btn.active { color: #f9c231; border-color: #f9c231; background: rgba(249,194,49,0.07); }
+    .filter-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
   </style>
 
   <div class="page-header">
@@ -167,24 +207,27 @@ const bands = Object.entries(TONE_SETTINGS);
       <p class="page-desc">
         Pedal settings per song. I generally set my amp right on the edge of breakup. Your amp and guitar will vary, but this should get you close.
       </p>
-      <div class="pedal-legend">
-        <div class="pedal-badge">
-          <span class="dot" style="background:#e8155e;"></span>
-          1991 — Gain1 · Gain2 · Volume / Bass · Mid · Treble
-        </div>
-        <div class="pedal-badge">
-          <span class="dot" style="background:#e8620a;"></span>
-          Dirt — Gain · Volume / Bass · Mid · Treble
-        </div>
-      </div>
     </div>
   </div>
+
+  <!-- BAND FILTER BAR -->
+  {bands.length > 1 && (
+    <div class="band-filter-bar">
+      <div class="band-filter-inner">
+        <button class="filter-btn active" data-band="">All</button>
+        {bands.map(([band]) => (
+          <button class="filter-btn" data-band={band}>{band}</button>
+        ))}
+      </div>
+    </div>
+  )}
 
   <div class="content">
     {bands.map(([band, songs]) => {
       const songCount = Object.keys(songs).length;
+      const slug = band.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       return (
-        <div class="band-block">
+        <div class="band-block" id={`band-${slug}`} data-band={band}>
           <div class="band-heading">
             <div class="band-name">{band}</div>
             <div class="band-count">{songCount} {songCount === 1 ? 'song' : 'songs'}</div>
@@ -212,5 +255,36 @@ const bands = Object.entries(TONE_SETTINGS);
       );
     })}
   </div>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const bandBlocks = document.querySelectorAll('.band-block');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.band;
+
+      // Update active state
+      filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+
+      if (!selected) {
+        // Show all
+        bandBlocks.forEach(block => block.style.display = '');
+      } else {
+        bandBlocks.forEach(block => {
+          block.style.display = block.dataset.band === selected ? '' : 'none';
+        });
+        // Scroll to band, accounting for nav + filter bar
+        const target = document.querySelector(`.band-block[data-band="${selected}"]`);
+        if (target) {
+          const navHeight = document.querySelector('.site-nav-wrap')?.offsetHeight ?? 80;
+          const filterHeight = document.querySelector('.band-filter-bar')?.offsetHeight ?? 0;
+          const offset = target.getBoundingClientRect().top + window.scrollY - navHeight - filterHeight - 12;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+</script>
 
 </BaseLayout>
