@@ -1,0 +1,503 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site-data.js';
+---
+
+<BaseLayout>
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 60px);
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse 55% 60% at 80% 50%, rgba(249,194,49,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 15% 80%, rgba(249,194,49,0.05) 0%, transparent 60%),
+        var(--bg);
+      padding: 80px 24px 60px;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Eyebrow */
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    /* Headline */
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(4rem, 8vw, 6.5rem);
+      letter-spacing: -0.01em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--muted2);
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+
+    /* Buttons */
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+    .btn-primary {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background: var(--red);
+      color: #0a0a0a;
+      border: 2px solid var(--red);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); color: #0a0a0a; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(249,194,49,0.35); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+    .btn-outline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text);
+      border: 2px solid rgba(255,255,255,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.04); color: var(--text); transform: translateY(-2px); }
+    .btn-outline:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+    /* Stats */
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Right column — bands callout */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .bands-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bands-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+    }
+    .bands-card-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .bands-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .band-chip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 5px 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted2);
+      white-space: nowrap;
+    }
+    .band-chip.featured {
+      background: rgba(249,194,49,0.1);
+      border-color: rgba(249,194,49,0.25);
+      color: var(--text);
+    }
+
+    .channel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .channel-info { flex: 1; }
+    .channel-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .channel-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .channel-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── PILLAR CARDS ── */
+    .pillars {
+      padding: 80px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .pillars-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pillars-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .pillars-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .pillar-card {
+      background: var(--bg);
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(249,194,49,0.05) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .pillar-card:hover { border-color: rgba(249,194,49,0.3); transform: translateY(-3px); }
+    .pillar-card:hover::before { opacity: 1; }
+
+    .pillar-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      color: #f9c231;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .pillar-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .pillar-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .pillar-link {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.15s ease, color 0.15s ease;
+    }
+    .pillar-link:hover { color: var(--text); gap: 10px; }
+
+    /* ── PEDAL COLLAB STRIP ── */
+    .collab-strip {
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .collab-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .collab-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .collab-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      min-width: 24px;
+    }
+    .collab-pedals {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pedal-chip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      color: var(--muted2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pedal-chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { display: none; }
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hero-title { font-size: clamp(3rem, 12vw, 4rem); }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .hero-cta { flex-direction: column; }
+      .btn-primary, .btn-outline { text-align: center; justify-content: center; }
+    }
+  </style>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <!-- Left: copy -->
+      <div>
+        <div class="hero-eyebrow">
+          <span class="red-rule"></span>
+        </div>
+
+        <h1 class="hero-title">
+          Learn the riffs<br/>
+          <em>As recorded</em>
+        </h1>
+
+        <p class="hero-sub">
+          Over 1,000 free guitar lessons on YouTube covering the bands you love — Pearl Jam, Alice in Chains,
+          Soundgarden, Nirvana, Radiohead and more. Tabs available for Patreon members.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn-primary" href="/lessons">
+            Browse Lessons
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn-outline" href={SITE.youtube} target="_blank" rel="noopener">YouTube Channel</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">1,000+</div>
+            <div class="stat-label">Lessons</div>
+          </div>
+          <div>
+            <div class="stat-num">Free</div>
+            <div class="stat-label">On YouTube</div>
+          </div>
+          <div>
+            <div class="stat-num">Tabs</div>
+            <div class="stat-label">Via Patreon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: context cards -->
+      <div class="hero-right">
+
+        <div class="bands-card">
+          <div class="bands-card-label">Bands covered</div>
+          <div class="bands-list">
+            <span class="band-chip featured">Pearl Jam</span>
+            <span class="band-chip featured">Alice in Chains</span>
+            <span class="band-chip featured">Soundgarden</span>
+            <span class="band-chip featured">Nirvana</span>
+            <span class="band-chip featured">Stone Temple Pilots</span>
+            <span class="band-chip featured">Radiohead</span>
+            <span class="band-chip">Audioslave</span>
+            <span class="band-chip">Foo Fighters</span>
+            <span class="band-chip">Smashing Pumpkins</span>
+            <span class="band-chip">Mad Season</span>
+            <span class="band-chip">Temple of the Dog</span>
+            <span class="band-chip">Silverchair</span>
+            <span class="band-chip">+ many more</span>
+          </div>
+        </div>
+
+        <div class="channel-card">
+          <div class="channel-info">
+            <div class="channel-label">YouTube Channel</div>
+            <div class="channel-name">@LetsPlayAll</div>
+            <div class="channel-meta">1,000+ lessons · Grunge &amp; Alt-Rock</div>
+          </div>
+          <a href={SITE.youtube} target="_blank" rel="noopener" class="btn-outline" style="padding:10px 20px;font-size:12px;">
+            Subscribe
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      <div class="pillars-header">
+        <span class="red-rule"></span>
+
+      </div>
+      <div class="pillars-title">Everything<br/>in one place</div>
+
+      <div class="pillars-grid">
+
+        <div class="pillar-card">
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">Guitar Lessons</div>
+          <p class="pillar-desc">Browse every lesson by band. See what's covered, find YouTube links, and get Patreon tabs.</p>
+          <a href="/lessons" class="pillar-link">Browse Lessons <span>→</span></a>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">Tone Settings</div>
+          <p class="pillar-desc">How I dial in pedal settings for each song.</p>
+          <a href="/tone" class="pillar-link">View Tones <span>→</span></a>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">Patreon Support</div>
+          <p class="pillar-desc">Support the channel and get guitar tabs for every lesson, monthly votes, song requests and more!</p>
+          <a href={SITE.patreon} target="_blank" rel="noopener" class="pillar-link">Join Patreon <span>→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PEDAL COLLAB STRIP -->
+  <div class="collab-strip">
+    <div class="collab-inner">
+      <span class="collab-label">Gear used - Work in progress!</span>
+      <div class="collab-rule"></div>
+      <div class="collab-pedals">
+        <div class="pedal-chip">
+          <span class="dot" style="background:#e8155e;"></span>
+          Funny Little Boxes 1991
+        </div>
+        <div class="pedal-chip">
+          <span class="dot" style="background:#e8620a;"></span>
+          Funny Little Boxes Dirt
+        </div>
+      </div>
+      <a href="/tone" class="label" style="white-space:nowrap;color:var(--muted2);font-size:10px;margin-left:8px;">
+        See settings →
+      </a>
+    </div>
+  </div>
+
+</BaseLayout>

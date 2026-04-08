@@ -1,0 +1,693 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../data/site-data.js';
+import lessonsData from '../../data/lessons-data.json';
+
+const { bands, various, stats, exportedAt } = lessonsData;
+const hasData = bands.length > 0 || various.length > 0;
+const allBands = [...bands, ...various.map(v => ({ ...v, isVarious: true }))];
+const exportDate = exportedAt ? new Date(exportedAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }) : null;
+---
+
+<BaseLayout title="Guitar Lessons" description="Browse 1,000+ grunge and alt-rock guitar lessons by band and album. Pearl Jam, Alice in Chains, Soundgarden, Nirvana and more.">
+  <style>
+    /* Remove grid texture on this page — too busy with dense text */
+    html { background-image: none; }
+
+    /* Yellow rule on lessons page */
+    .red-rule { background: #f9c231; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 56px 24px 40px;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 50% 80% at 100% 50%, rgba(249,194,49,0.07) 0%, transparent 70%),
+        var(--bg);
+    }
+    .page-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .page-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.01em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .page-desc {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--muted2);
+      line-height: 1.7;
+      max-width: 460px;
+    }
+    .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Stat pills */
+    .stats-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .stat-pill strong {
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-right: 4px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      background: var(--red);
+      color: #0a0a0a;
+      border: 2px solid var(--red);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); color: #0a0a0a; transform: translateY(-1px); }
+    .btn-primary:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+    .btn-outline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      background: transparent;
+      color: var(--muted2);
+      border: 2px solid var(--border2);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color 0.15s ease, color 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.4); color: var(--text); }
+    .btn-outline:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+    /* ── LAYOUT ── */
+    .lessons-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--surface3); }
+
+    /* Sort buttons */
+    .sort-row {
+      display: flex;
+      gap: 4px;
+      padding: 12px 12px 8px;
+    }
+    .sort-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+    .sort-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .sort-btn.active { color: #f9c231; border-color: #f9c231; background: rgba(249,194,49,0.07); }
+    .sort-btn:focus-visible { outline: 2px solid #f9c231; outline-offset: 2px; }
+
+    .sidebar-section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 16px 6px;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 16px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted2);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: color 0.1s ease, border-color 0.1s ease, background 0.1s ease;
+    }
+    .sidebar-link:hover {
+      color: var(--text);
+      border-left-color: #f9c231;
+      background: rgba(255,255,255,0.03);
+    }
+    .sidebar-link.various:hover { border-left-color: rgba(255,255,255,0.3); }
+    .sidebar-pct {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .sidebar-pct.good { color: #4ade80; }
+
+    /* ── MAIN CONTENT ── */
+    .main-content { padding: 40px 32px 80px; overflow-y: auto; }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      max-width: 600px;
+      margin: 80px auto;
+    }
+    .empty-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .empty-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+    }
+    .empty-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .empty-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--muted2);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .empty-body code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      color: var(--muted2);
+    }
+    .empty-steps {
+      list-style: none;
+      counter-reset: steps;
+      margin-bottom: 28px;
+    }
+    .empty-steps li {
+      counter-increment: steps;
+      padding: 10px 0 10px 36px;
+      position: relative;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+    .empty-steps li:last-child { border-bottom: none; }
+    .empty-steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0; top: 10px;
+      width: 22px; height: 22px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 22px;
+      text-align: center;
+    }
+    .empty-steps li strong { color: var(--text); }
+    .empty-steps li code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 1px 5px;
+      color: var(--muted2);
+    }
+
+    /* ── BAND SECTIONS ── */
+    .band-section { margin-bottom: 64px; scroll-margin-top: 96px; }
+
+    .band-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .band-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .band-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      padding-bottom: 4px;
+    }
+    .band-meta .covered { color: #4ade80; }
+
+    .progress-bar {
+      width: 100%;
+      height: 2px;
+      background: var(--surface2);
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #f9c231;
+    }
+    .progress-fill.complete { background: #4ade80; }
+
+    /* Album blocks */
+    .album-block { margin-bottom: 28px; }
+    .album-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #f9c231;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .album-name .album-count { color: var(--surface3); font-size: 10px; }
+    .album-name::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* Song tracks */
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 4px;
+    }
+    .track {
+      padding: 7px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      border: 1px solid transparent;
+    }
+    .track.covered {
+      background: rgba(74,222,128,0.05);
+      border-color: rgba(74,222,128,0.15);
+    }
+    .track.gap {
+      background: var(--surface);
+      border-color: var(--border);
+      color: var(--muted);
+    }
+    .track-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .track.covered .track-dot { background: #4ade80; }
+    .track.gap .track-dot { background: var(--surface3); border: 1px solid var(--surface3); }
+    .track-name { flex: 1; line-height: 1.3; }
+    .track.covered .track-name { color: var(--text); }
+    .track-links { display: flex; gap: 6px; flex-shrink: 0; }
+    .track-link {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #f9c231;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.12s ease;
+    }
+    .track-link:hover { color: var(--text); }
+    .track-link.tab { color: #42c5b5; }
+    .track-link.tab:hover { color: #6dd9cc; }
+
+    /* Various section */
+    .various-heading {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .various-section .band-meta { color: var(--muted); }
+    .various-songs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 4px;
+      padding-top: 16px;
+    }
+    .various-song {
+      padding: 7px 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--muted2);
+    }
+
+    /* Separator before Various */
+    .various-separator {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      padding-top: 16px;
+    }
+    .various-separator span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .various-separator::before, .various-separator::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Export date */
+    .export-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .lessons-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .main-content { padding: 24px 16px 60px; }
+    }
+  </style>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div>
+        <div class="page-eyebrow">
+          <span class="red-rule"></span>
+        </div>
+        <h1 class="page-title">All Guitar<br/>Lessons</h1>
+        <p class="page-desc">
+          Browse by band - with full album breakdowns for the most popular. YouTube links for every covered song,
+          Patreon tab links for members.
+        </p>
+        {hasData && (
+          <div class="stats-row">
+            <div class="stat-pill"><strong>{stats.coveredSongs.toLocaleString()}</strong> songs covered</div>
+            <div class="stat-pill"><strong>{stats.totalSongs.toLocaleString()}</strong> songs tracked</div>
+            <div class="stat-pill"><strong>{stats.totalVideos.toLocaleString()}</strong> videos</div>
+            {stats.variousSongs > 0 && <div class="stat-pill"><strong>{stats.variousSongs}</strong> various artists</div>}
+          </div>
+        )}
+      </div>
+      <div class="header-actions">
+        <a class="btn-outline" href={SITE.patreon} target="_blank" rel="noopener">Get Tabs (Patreon)</a>
+        <a class="btn-primary" href={SITE.youtube} target="_blank" rel="noopener">YouTube Channel →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="lessons-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      {hasData ? (
+        <>
+          <div class="sort-row">
+            <button class="sort-btn active" data-sort="coverage">Coverage</button>
+            <button class="sort-btn" data-sort="az">A–Z</button>
+          </div>
+
+          <div id="sidebar-all-bands">
+            {bands.map(band => (
+              <a
+                href={`#${band.slug}`}
+                class="sidebar-link"
+                data-name={band.name}
+                data-coverage={band.coveredCount}
+              >
+                <span>{band.name}</span>
+                <span class={`sidebar-pct ${band.coveragePct >= 80 ? 'good' : ''}`}>
+                  {band.coveredCount}/{band.totalCount}
+                </span>
+              </a>
+            ))}
+            {various.map(v => (
+              <a href={`#${v.slug}`} class="sidebar-link" data-name={v.name} data-coverage={v.songs.length}>
+                <span>{v.name}</span>
+                <span class="sidebar-pct">{v.songs.length}</span>
+              </a>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div style="padding:20px 16px;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);line-height:1.7;">
+            No data yet.<br/>Export from RiffMap to populate.
+          </div>
+        </div>
+      )}
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="main-content">
+
+      {!hasData ? (
+        <!-- Empty state -->
+        <div class="empty-state">
+          <div class="empty-card">
+            <div class="label" style="margin-bottom:12px;">No lesson data yet</div>
+            <div class="empty-title">Connect RiffMap to populate this page</div>
+            <p class="empty-body">
+              This page is fed by a <code>lessons-data.json</code> export from the RiffMap tracker.
+              Follow the steps below to export and deploy your first dataset.
+            </p>
+            <ol class="empty-steps">
+              <li>Open <strong>RiffMap</strong> (<code>guitar-lesson-tracker.html</code>) and fetch your YouTube videos</li>
+              <li>Go to the <strong>Export</strong> tab → click <strong>"Download lessons-data.json"</strong></li>
+              <li>Save the file to <code>src/data/lessons-data.json</code> in the Astro project (replace the placeholder)</li>
+              <li>Run <code>npm run build</code> — this page will render all your bands, albums, and songs</li>
+            </ol>
+            <a class="btn-primary" href={SITE.youtube} target="_blank" rel="noopener">View Lessons on YouTube</a>
+          </div>
+        </div>
+      ) : (
+        <>
+          <!-- All bands + various -->
+          <div id="all-bands-container">
+          {bands.map(band => (
+            <section
+              class="band-section"
+              id={band.slug}
+              data-name={band.name}
+              data-coverage={band.coveredCount}
+            >
+              <div class="band-heading">
+                <div class="band-name">{band.name}</div>
+                <div class="band-meta">
+                  <span class="covered">{band.coveredCount}</span> covered &middot; {band.totalCount - band.coveredCount} gaps &middot; {band.coveragePct}%
+                </div>
+              </div>
+              <div class="progress-bar">
+                <div
+                  class={`progress-fill ${band.coveragePct === 100 ? 'complete' : ''}`}
+                  style={`width:${band.coveragePct}%`}
+                ></div>
+              </div>
+
+              {band.albums.map(album => (
+                <div class="album-block">
+                  <div class="album-name">
+                    {album.name}
+                    <span class="album-count">{album.coveredCount}/{album.totalCount}</span>
+                  </div>
+                  <div class="tracks-grid">
+                    {album.songs.map(song => (
+                      <div class={`track ${song.covered ? 'covered' : 'gap'}`}>
+                        <div class="track-dot"></div>
+                        <span class="track-name">{song.name}</span>
+                        {song.covered && (
+                          <div class="track-links">
+                            <a class="track-link" href={song.watchUrl} target="_blank" rel="noopener">▶ watch</a>
+                            {song.tabUrl && (
+                              <a class="track-link tab" href={song.tabUrl} target="_blank" rel="noopener">📄 tab</a>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </section>
+          ))}
+          {various.map(v => (
+            <section class="band-section various-section" id={v.slug} data-name={v.name} data-coverage={v.songs.length}>
+              <div class="band-heading">
+                <div class="various-heading">{v.name}</div>
+                <div class="band-meta">{v.songs.length} {v.songs.length === 1 ? 'song' : 'songs'}</div>
+              </div>
+              <div class="various-songs-grid">
+                {v.songs.map(song => (
+                  <div class="various-song">
+                    <div class="track-dot" style="background:var(--muted);"></div>
+                    <span class="track-name">{song.name}</span>
+                    <div class="track-links">
+                      {song.watchUrl && (
+                        <a class="track-link" href={song.watchUrl} target="_blank" rel="noopener">▶ watch</a>
+                      )}
+                      {song.tabUrl && (
+                        <a class="track-link tab" href={song.tabUrl} target="_blank" rel="noopener">📄 tab</a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+          </div>{/* end #all-bands-container */}
+
+          {exportDate && (
+            <div class="export-note">Last exported from RiffMap: {exportDate}</div>
+          )}
+        </>
+      )}
+
+    </main>
+  </div>
+
+</BaseLayout>
+
+<script>
+  // Sort bands in both sidebar and main content
+  const SORT_KEY = 'lpa-lessons-sort';
+
+  function getSections() {
+    return Array.from(document.querySelectorAll('#all-bands-container > .band-section'));
+  }
+  function getSidebarLinks() {
+    return Array.from(document.querySelectorAll('#sidebar-all-bands > .sidebar-link'));
+  }
+
+  function applySort(mode) {
+    const sections = getSections();
+    const links = getSidebarLinks();
+
+    const sorted = [...sections].sort((a, b) => {
+      if (mode === 'az') {
+        return (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '');
+      }
+      // coverage (default)
+      return Number(b.dataset.coverage ?? 0) - Number(a.dataset.coverage ?? 0);
+    });
+
+    const container = document.getElementById('all-bands-container');
+    if (container) sorted.forEach(el => container.appendChild(el));
+
+    // Mirror sort order in sidebar
+    const sidebarContainer = document.getElementById('sidebar-all-bands');
+    if (sidebarContainer) {
+      const sortedLinks = [...links].sort((a, b) => {
+        if (mode === 'az') return (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '');
+        return Number(b.dataset.coverage ?? 0) - Number(a.dataset.coverage ?? 0);
+      });
+      sortedLinks.forEach(el => sidebarContainer.appendChild(el));
+    }
+
+    // Update button states
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.sort === mode);
+    });
+
+    localStorage.setItem(SORT_KEY, mode);
+  }
+
+  // Restore persisted sort (default to coverage)
+  const saved = localStorage.getItem(SORT_KEY) ?? 'coverage';
+  applySort(saved);
+
+  // Wire up buttons
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.addEventListener('click', () => applySort(btn.dataset.sort ?? 'coverage'));
+  });
+</script>

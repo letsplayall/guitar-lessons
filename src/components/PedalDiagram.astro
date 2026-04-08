@@ -1,0 +1,105 @@
+---
+// PedalDiagram.astro
+// Renders a pedal SVG from a pedal definition + settings object.
+// Usage:
+//   <PedalDiagram pedal={PEDALS["1991"]} settings={{ gain1: 75, gain2: 60, ... }} />
+
+import { PEDALS } from '../data/site-data.js';
+
+interface Props {
+  pedalId: string;   // key into PEDALS, e.g. "1991" or "dirt"
+  settings: Record<string, number>;  // knob id -> 0-100 value
+  label?: string;    // optional song name label below pedal
+  size?: number;     // rendered width in px, default 132
+}
+
+const { pedalId, settings, label, size = 132 } = Astro.props;
+const pedal = PEDALS[pedalId];
+
+// Convert 0-100 percentage to SVG rotation degrees
+// 0% = -135deg (fully CCW), 50% = 0deg (noon), 100% = +135deg (fully CW)
+function pctToRot(pct: number): number {
+  return (pct - 50) * 2.7;
+}
+
+const TOP_Y    = 40;   // knob centre y for top row
+const BOTTOM_Y = 95;   // knob centre y for bottom row
+const LABEL_OFFSET = 26; // px below knob centre for label
+---
+
+<div class="pedal-wrap">
+  {label && <div class="pedal-label">{label}</div>}
+  <svg
+    width={size}
+    height={size * (242/132)}
+    viewBox="0 0 132 242"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <clipPath id={`clip-${pedalId}-${label ?? 'x'}`}>
+        <rect x="6" y="6" width="120" height="230" rx="12"/>
+      </clipPath>
+    </defs>
+
+    <!-- Enclosure -->
+    <rect x="6" y="6" width="120" height="230" rx="12" fill={pedal.color}/>
+
+    <!-- Graphic text -->
+    <g clip-path={`url(#clip-${pedalId}-${label ?? 'x'})`}>
+      <text
+        x="65" y="165"
+        text-anchor="middle"
+        font-family="'Alumni Sans Collegiate One', Impact, sans-serif"
+        font-size="155"
+        fill="#111"
+        opacity="0.88"
+        letter-spacing="2"
+        transform="rotate(-90, 66, 121)"
+      >{pedal.graphic}</text>
+    </g>
+
+    <!-- Border -->
+    <rect x="6" y="6" width="120" height="230" rx="12" fill="none" stroke={pedal.borderColor} stroke-width="1.5"/>
+
+    <!-- Knobs -->
+    {pedal.knobs.map((knob) => {
+      const y = knob.row === 'top' ? TOP_Y : BOTTOM_Y;
+      const pct = settings[knob.id] ?? 50;
+      const rot = pctToRot(pct);
+      return (
+        <g transform={`translate(${knob.x},${y})`}>
+          <circle r="14" fill="#1c1c1c" stroke="#555" stroke-width="1.5"/>
+          <circle r="10" fill="#2a2a2a"/>
+          <line
+            x1="0" y1="-2" x2="0" y2="-8"
+            stroke="#fff" stroke-width="2" stroke-linecap="round"
+            transform={`rotate(${rot})`}
+          />
+          <text
+            x="0" y={LABEL_OFFSET}
+            text-anchor="middle"
+            fill="#ddd"
+            font-size="7"
+            font-family="IBM Plex Mono, monospace"
+          >{knob.label}</text>
+        </g>
+      );
+    })}
+
+    <!-- Footswitch -->
+    <circle cx="66" cy="200" r="18" fill="#e0e0e0" stroke="#bbb" stroke-width="2"/>
+    <circle cx="66" cy="200" r="7" fill="#999"/>
+  </svg>
+</div>
+
+<style>
+  .pedal-wrap { display: inline-block; text-align: center; }
+  .pedal-label {
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+</style>

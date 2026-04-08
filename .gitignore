@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build output — GitHub Actions builds this fresh on deploy
+dist/
+
+# Astro cache
+.astro/
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db

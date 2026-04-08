@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PedalDiagram from '../../components/PedalDiagram.astro';
+import { TONE_SETTINGS } from '../../data/site-data.js';
+
+const bands = Object.entries(TONE_SETTINGS);
+---
+
+<BaseLayout title="Tone Settings" description="Exact pedal settings for grunge and alt-rock songs — Funny Little Boxes 1991 and Dirt knob positions per song.">
+  <style>
+    .page-header {
+      padding: 64px 24px 48px;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 40% 80% at 100% 50%, rgba(249,194,49,0.07) 0%, transparent 70%),
+        var(--bg);
+    }
+    .page-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .page-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.01em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .page-desc {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--muted2);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* Pedal legend */
+    .pedal-legend {
+      display: flex;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .pedal-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 6px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted2);
+    }
+    .pedal-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Content */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    .band-block { margin-bottom: 72px; }
+
+    .band-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .band-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .band-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Song rows */
+    .song-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .song-info {}
+    .song-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .song-notes {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 10px;
+      max-width: 420px;
+    }
+    .song-notes::before {
+      content: '// ';
+      font-family: var(--font-mono);
+      color: var(--muted);
+      opacity: 0.5;
+    }
+    .pedals-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    /* Knob value callout */
+    .knob-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 6px;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 640px) {
+      .song-row { grid-template-columns: 1fr; }
+      .pedals-row { justify-content: flex-start; }
+    }
+  </style>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-eyebrow">
+        <span class="red-rule"></span>
+        <span class="label">Tone Settings - Work In Progress!</span>
+      </div>
+      <h1 class="page-title">How I get<br/>the tones</h1>
+      <p class="page-desc">
+        Pedal settings per song. I generally set my amp right on the edge of breakup. Your amp and guitar will vary, but this should get you close.
+      </p>
+      <div class="pedal-legend">
+        <div class="pedal-badge">
+          <span class="dot" style="background:#e8155e;"></span>
+          1991 — Gain1 · Gain2 · Volume / Bass · Mid · Treble
+        </div>
+        <div class="pedal-badge">
+          <span class="dot" style="background:#e8620a;"></span>
+          Dirt — Gain · Volume / Bass · Mid · Treble
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    {bands.map(([band, songs]) => {
+      const songCount = Object.keys(songs).length;
+      return (
+        <div class="band-block">
+          <div class="band-heading">
+            <div class="band-name">{band}</div>
+            <div class="band-count">{songCount} {songCount === 1 ? 'song' : 'songs'}</div>
+          </div>
+          {Object.entries(songs).map(([song, data]) => (
+            <div class="song-row">
+              <div class="song-info">
+                <div class="song-title">{song}</div>
+                {data.notes && <div class="song-notes">{data.notes}</div>}
+              </div>
+              <div class="pedals-row">
+                {data.pedals.map((p) => (
+                  <div style="text-align:center;">
+                    <PedalDiagram
+                      pedalId={p.pedal}
+                      settings={p.settings}
+                      size={120}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    })}
+  </div>
+
+</BaseLayout>
