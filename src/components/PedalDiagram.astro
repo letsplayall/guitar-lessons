@@ -2,93 +2,221 @@
 // PedalDiagram.astro
 // Renders a pedal SVG from a pedal definition + settings object.
 // Usage:
-//   <PedalDiagram pedal={PEDALS["1991"]} settings={{ gain1: 75, gain2: 60, ... }} />
+//   <PedalDiagram pedalId="1991" settings={{ gain1: 75, gain2: 60, ... }} />
+//   <PedalDiagram pedalId="scran" settings={{ thick: 60, toggle: "00s", volume: 70 }} />
 
 import { PEDALS } from '../data/site-data.js';
+import fs from 'node:fs';
+import path from 'node:path';
 
 interface Props {
-  pedalId: string;   // key into PEDALS, e.g. "1991" or "dirt"
-  settings: Record<string, number>;  // knob id -> 0-100 value
-  label?: string;    // optional song name label below pedal
-  size?: number;     // rendered width in px, default 132
+  pedalId: string;                           // key into PEDALS
+  settings: Record<string, number | string>; // knob id -> 0-100, or "00s"/"90s" for toggle
+  label?: string;                            // optional song label below pedal
+  size?: number;                             // rendered width in px, default 132
 }
 
 const { pedalId, settings, label, size = 132 } = Astro.props;
 const pedal = PEDALS[pedalId];
 
-// Convert 0-100 percentage to SVG rotation degrees
-// 0% = -135deg (fully CCW), 50% = 0deg (noon), 100% = +135deg (fully CW)
+// Base64-embed PNG at build time so mix-blend-mode works reliably
+let graphicBase64: string | null = null;
+if (pedal.graphicType === 'png' && pedal.graphicPng) {
+  const filePath = path.join(process.cwd(), 'public', pedal.graphicPng);
+  graphicBase64 = fs.readFileSync(filePath).toString('base64');
+}
+
+// 0-100 -> SVG rotation: 0% = -135deg (CCW), 50% = 0deg (noon), 100% = +135deg (CW)
 function pctToRot(pct: number): number {
   return (pct - 50) * 2.7;
 }
 
-const TOP_Y    = 40;   // knob centre y for top row
-const BOTTOM_Y = 95;   // knob centre y for bottom row
-const LABEL_OFFSET = 26; // px below knob centre for label
+const TOP_Y    = 40;
+const BOTTOM_Y = 95;
+const LABEL_BELOW =  26;
+const LABEL_ABOVE = -19;
+
+const clipId = `clip-${pedalId}-${label ?? 'x'}`;
+
+// Knob styling — all optional, pedal definition overrides defaults
+const knobColor          = pedal.knobColor          ?? '#1c1c1c';
+const knobInnerColor     = pedal.knobInnerColor     ?? '#2a2a2a';
+const knobOuterR         = pedal.knobOuterR         ?? 14;
+const knobInnerR         = pedal.knobInnerR         ?? 10;
+const knobStroke         = pedal.knobStroke         ?? '#555';
+const knobIndicatorColor = pedal.knobIndicatorColor ?? '#fff';
+const knobLabelColor     = pedal.knobLabelColor     ?? '#ddd';
+const knobLabelOffset    = pedal.knobLabelOffset    ?? LABEL_BELOW;
+const knobTexture        = pedal.knobTexture        ?? false;
+const textureAngles      = [0, 45, 90, 135, 180, 225, 270, 315];
+
+// Indicator line positions derived from knob radius
+const indY1 = -(knobOuterR - 12); // e.g. r=14 → -2, r=15 → -3
+const indY2 = -(knobOuterR - 6);  // e.g. r=14 → -8, r=15 → -9
+
+// Toggle pre-computation
+const toggleKnob  = pedal.knobs.find((k: any) => k.type === 'toggle');
+const toggleVal   = toggleKnob ? (settings[toggleKnob.id] ?? '00s') : null;
+const toggleIsUp  = toggleVal === '00s';
+const toggleY     = toggleKnob
+  ? (toggleKnob.y !== undefined ? toggleKnob.y : BOTTOM_Y)
+  : BOTTOM_Y;
+const color00s    = toggleIsUp  ? '#e8ff47' : 'rgba(255,255,255,0.4)';
+const color90s    = !toggleIsUp ? '#e8ff47' : 'rgba(255,255,255,0.4)';
+const fw00s       = toggleIsUp  ? '500' : '400';
+const fw90s       = !toggleIsUp ? '500' : '400';
 ---
 
-<div class="pedal-wrap">
+<div class="pedal-wrap" style="isolation: auto;">
   {label && <div class="pedal-label">{label}</div>}
   <svg
     width={size}
     height={size * (242/132)}
     viewBox="0 0 132 242"
     xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
   >
     <defs>
-      <clipPath id={`clip-${pedalId}-${label ?? 'x'}`}>
+      <clipPath id={clipId}>
         <rect x="6" y="6" width="120" height="230" rx="12"/>
       </clipPath>
     </defs>
 
-    <!-- Enclosure -->
+    <!-- Enclosure base -->
     <rect x="6" y="6" width="120" height="230" rx="12" fill={pedal.color}/>
 
-    <!-- Graphic text -->
-    <g clip-path={`url(#clip-${pedalId}-${label ?? 'x'})`}>
-      <text
-        x="65" y="165"
-        text-anchor="middle"
-        font-family="'Alumni Sans Collegiate One', Impact, sans-serif"
-        font-size="155"
-        fill="#111"
-        opacity="0.88"
-        letter-spacing="2"
-        transform="rotate(-90, 66, 121)"
-      >{pedal.graphic}</text>
+    <!-- PNG overlay: must be a direct SVG child (not inside <g>) for multiply blend to work -->
+    {pedal.graphicType === 'png' && graphicBase64 && (
+      <image
+        href={`data:image/png;base64,${graphicBase64}`}
+        x="6" y="6"
+        width="120" height="230"
+        clip-path={`url(#${clipId})`}
+        style="mix-blend-mode: multiply; opacity: 0.92;"
+        preserveAspectRatio="xMidYMid meet"
+      />
+    )}
+
+    <!-- Clipped graphic group (text, union-jack, label-box) -->
+    <g clip-path={`url(#${clipId})`}>
+
+      <!-- Union Jack (Scran) -->
+      {pedal.graphicType === 'union-jack' && (
+        <Fragment>
+          {/* Blue field */}
+          <rect x="6" y="6" width="120" height="230" fill="#012169"/>
+          {/* St Andrew white diagonals */}
+          <line x1="6" y1="6" x2="126" y2="236" stroke="white" stroke-width="38"/>
+          <line x1="126" y1="6" x2="6" y2="236" stroke="white" stroke-width="38"/>
+          {/* St Patrick red diagonals */}
+          <line x1="6" y1="6" x2="126" y2="236" stroke="#C8102E" stroke-width="22"/>
+          <line x1="126" y1="6" x2="6" y2="236" stroke="#C8102E" stroke-width="22"/>
+          {/* St George white cross */}
+          <rect x="48" y="6" width="36" height="230" fill="white"/>
+          <rect x="6" y="101" width="120" height="36" fill="white"/>
+          {/* St George red cross */}
+          <rect x="54" y="6" width="24" height="230" fill="#C8102E"/>
+          <rect x="6" y="107" width="120" height="24" fill="#C8102E"/>
+          {/* SCRAN label box */}
+          <rect x="18" y="152" width="96" height="28" rx="3" fill="#111"/>
+          <rect x="20" y="154" width="92" height="24" rx="2" fill="none" stroke="white" stroke-width="1.5"/>
+          <text
+            x="66" y="173"
+            text-anchor="middle"
+            font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+            font-size="26" font-weight="900" font-style="italic"
+            fill="white" letter-spacing="1"
+          >scran</text>
+        </Fragment>
+      )}
+
+      <!-- Text graphic (1991, DIRT, etc.) -->
+      {(!pedal.graphicType || pedal.graphicType === 'text') && pedal.graphic && (
+        <text
+          x="65" y="165"
+          text-anchor="middle"
+          font-family="'Alumni Sans Collegiate One', Impact, sans-serif"
+          font-size="155"
+          fill="#111"
+          opacity="0.88"
+          letter-spacing="2"
+          transform="rotate(-90, 66, 121)"
+        >{pedal.graphic}</text>
+      )}
+
+      <!-- Label-box graphic (black box + italic text) -->
+      {pedal.graphicType === 'label-box' && pedal.graphic && (
+        <g transform="translate(66, 140) rotate(-90)">
+          <rect x="-48" y="-20" width="96" height="40" rx="3" fill="#111"/>
+          <rect x="-44" y="-16" width="88" height="32" rx="2" fill="none" stroke="#fff" stroke-width="1.5"/>
+          <text
+            x="0" y="6"
+            text-anchor="middle"
+            font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+            font-size="22" font-weight="900" font-style="italic"
+            fill="#fff" letter-spacing="2"
+          >{pedal.graphic}</text>
+        </g>
+      )}
+
     </g>
 
-    <!-- Border -->
+    <!-- Border (drawn after graphic so it sits on top) -->
     <rect x="6" y="6" width="120" height="230" rx="12" fill="none" stroke={pedal.borderColor} stroke-width="1.5"/>
 
-    <!-- Knobs -->
-    {pedal.knobs.map((knob) => {
-      const y = knob.row === 'top' ? TOP_Y : BOTTOM_Y;
-      const pct = settings[knob.id] ?? 50;
+    <!-- Knobs (drawn after clipPath group so they sit on top of the flag) -->
+    {pedal.knobs.map((knob: any) => {
+      if (knob.type === 'toggle') return null;
+      const y   = knob.y !== undefined ? knob.y : (knob.row === 'top' ? TOP_Y : BOTTOM_Y);
+      const pct = typeof settings[knob.id] === 'number' ? settings[knob.id] as number : 50;
       const rot = pctToRot(pct);
+      const lY  = knob.labelPosition === 'above' ? LABEL_ABOVE : knobLabelOffset;
       return (
         <g transform={`translate(${knob.x},${y})`}>
-          <circle r="14" fill="#1c1c1c" stroke="#555" stroke-width="1.5"/>
-          <circle r="10" fill="#2a2a2a"/>
+          <circle r={knobOuterR} fill={knobColor} stroke={knobStroke} stroke-width="1.5"/>
+          <circle r={knobInnerR} fill={knobInnerColor}/>
+          {knobTexture && textureAngles.map((a: number) => (
+            <line x1="0" y1="-6" x2="0" y2="-10" stroke="#8a6820" stroke-width="1" opacity="0.5" transform={`rotate(${a})`}/>
+          ))}
           <line
-            x1="0" y1="-2" x2="0" y2="-8"
-            stroke="#fff" stroke-width="2" stroke-linecap="round"
+            x1="0" y1={indY1} x2="0" y2={indY2}
+            stroke={knobIndicatorColor} stroke-width="2" stroke-linecap="round"
             transform={`rotate(${rot})`}
           />
           <text
-            x="0" y={LABEL_OFFSET}
+            x="0" y={lY}
             text-anchor="middle"
-            fill="#ddd"
+            fill={knobLabelColor}
             font-size="7"
             font-family="IBM Plex Mono, monospace"
+            font-weight="500"
           >{knob.label}</text>
         </g>
       );
     })}
 
+    <!-- Toggle switch -->
+    {toggleKnob && (
+      <g transform={`translate(${toggleKnob.x},${toggleY})`}>
+        <rect x="-8" y="-12" width="16" height="24" rx="3" fill="#333" stroke="#555" stroke-width="1"/>
+        {toggleIsUp && <rect x="-2.5" y="-18" width="5" height="14" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
+        {toggleIsUp && <circle cx="0" cy="-19" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
+        {!toggleIsUp && <rect x="-2.5" y="4" width="5" height="14" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
+        {!toggleIsUp && <circle cx="0" cy="19" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
+      </g>
+    )}
+
+    <!-- Toggle era labels -->
+    {toggleKnob && (
+      <Fragment>
+        <text x="54" y="128" text-anchor="middle" fill={color90s} font-size="6" font-family="IBM Plex Mono, monospace" font-weight={fw90s}>▼ 90s</text>
+        <text x="78" y="128" text-anchor="middle" fill={color00s} font-size="6" font-family="IBM Plex Mono, monospace" font-weight={fw00s}>00s ▲</text>
+      </Fragment>
+    )}
+
     <!-- Footswitch -->
-    <circle cx="66" cy="200" r="18" fill="#e0e0e0" stroke="#bbb" stroke-width="2"/>
-    <circle cx="66" cy="200" r="7" fill="#999"/>
+    <circle cx="66" cy="206" r="18" fill="#e0e0e0" stroke="#bbb" stroke-width="2"/>
+    <circle cx="66" cy="206" r="7" fill="#999"/>
   </svg>
 </div>
 
