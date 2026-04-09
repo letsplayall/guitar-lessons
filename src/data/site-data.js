@@ -68,7 +68,7 @@ export const TONE_SETTINGS = {
       pedals: [
         {
           pedal: "1991",
-          settings: { gain1: 75, gain2: 60, volume: 70, bass: 55, middle: 45, treble: 50 }
+          settings: { gain1: 90, gain2: 50, volume: 70, bass: 55, middle: 45, treble: 54 }
         }
       ],
       notes: "Bridge pickup. Amp fairly clean — the 1991 is doing the work."
