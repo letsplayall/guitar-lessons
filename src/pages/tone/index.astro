@@ -76,6 +76,15 @@ const bands = Object.entries(TONE_SETTINGS);
 
     .band-block { margin-bottom: 72px; }
 
+    .songs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 48px;
+    }
+    @media (max-width: 900px) {
+      .songs-grid { grid-template-columns: 1fr; }
+    }
+
     .band-heading {
       display: flex;
       align-items: center;
@@ -104,8 +113,8 @@ const bands = Object.entries(TONE_SETTINGS);
     /* Song rows */
     .song-row {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 40px;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
       align-items: start;
       padding: 28px 0;
       border-bottom: 1px solid var(--border);
@@ -138,7 +147,8 @@ const bands = Object.entries(TONE_SETTINGS);
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      justify-content: flex-start;
+      order: -1; /* pedals column sits on the left, info on the right */
     }
 
     /* Knob value callout */
@@ -151,10 +161,81 @@ const bands = Object.entries(TONE_SETTINGS);
       letter-spacing: 0.05em;
     }
 
+    /* Multi-rig song layout */
+    .song-row--multi {
+      grid-template-columns: 1fr;
+    }
+    .song-rigs {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 4px;
+    }
+    .rig-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 3px 8px;
+      border-left: 2px solid rgba(255,255,255,0.12);
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .rig-body {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
     @media (max-width: 640px) {
       .song-row { grid-template-columns: 1fr; }
-      .pedals-row { justify-content: flex-start; }
+      .pedals-row { order: 0; justify-content: center; }
+      .rig-body { grid-template-columns: 1fr; }
+      .rig-body .pedals-row { justify-content: center; }
     }
+
+    /* Album sub-heading */
+    .album-section { margin-bottom: 8px; }
+    .album-heading {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      padding: 5px 0 5px 10px;
+      border-left: 2px solid var(--red);
+      margin: 28px 0 4px;
+    }
+
+    /* Song title row — title + watch button inline */
+    .song-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .song-title { margin-bottom: 0; }
+    .watch-btn {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      padding: 3px 9px;
+      border: 1px solid rgba(249,194,49,0.3);
+      background: rgba(249,194,49,0.05);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.12s ease, border-color 0.12s ease;
+      flex-shrink: 0;
+    }
+    .watch-btn:hover { background: rgba(249,194,49,0.12); border-color: rgba(249,194,49,0.55); color: var(--red); }
+    .watch-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    /* hint cursor on pedal diagrams — needs :global because .pedal-wrap is from PedalDiagram.astro */
 
     /* ── BAND FILTER BAR ── */
     .band-filter-bar {
@@ -197,6 +278,84 @@ const bands = Object.entries(TONE_SETTINGS);
     .filter-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
   </style>
 
+  <style is:global>
+    /* Lightbox styles must be global — the overlay is created by JS and won't have Astro's scoped attribute */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease;
+      cursor: pointer;
+    }
+    .lightbox-overlay.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      cursor: default;
+      transform: scale(0.88);
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      margin-top: 54px;
+    }
+    .lightbox-overlay.is-open .lightbox-inner {
+      transform: scale(1);
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+      z-index: 1000;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.18); }
+    .lightbox-close:focus-visible { outline: 2px solid #f9c231; outline-offset: 3px; }
+    .lightbox-caption {
+      text-align: center;
+      line-height: 1.5;
+    }
+    .lightbox-caption .cap-song {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .lightbox-caption .cap-pedal {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+    }
+    /* zoom cursor on pedal diagrams */
+    .pedal-wrap { cursor: zoom-in; }
+  </style>
+
   <div class="page-header">
     <div class="page-header-inner">
       <div class="page-eyebrow">
@@ -223,8 +382,8 @@ const bands = Object.entries(TONE_SETTINGS);
   )}
 
   <div class="content">
-    {bands.map(([band, songs]) => {
-      const songCount = Object.keys(songs).length;
+    {bands.map(([band, albums]) => {
+      const songCount = Object.values(albums).reduce((sum: number, songs: any) => sum + Object.keys(songs).length, 0);
       const slug = band.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       return (
         <div class="band-block" id={`band-${slug}`} data-band={band}>
@@ -232,22 +391,72 @@ const bands = Object.entries(TONE_SETTINGS);
             <div class="band-name">{band}</div>
             <div class="band-count">{songCount} {songCount === 1 ? 'song' : 'songs'}</div>
           </div>
-          {Object.entries(songs).map(([song, data]) => (
-            <div class="song-row">
-              <div class="song-info">
-                <div class="song-title">{song}</div>
-                {data.notes && <div class="song-notes">{data.notes}</div>}
-              </div>
-              <div class="pedals-row">
-                {data.pedals.map((p) => (
-                  <div style="text-align:center;">
-                    <PedalDiagram
-                      pedalId={p.pedal}
-                      settings={p.settings}
-                      size={120}
-                    />
-                  </div>
-                ))}
+
+          {Object.entries(albums).map(([album, songs]: [string, any]) => (
+            <div class="album-section">
+              <div class="album-heading">{album}</div>
+              <div class="songs-grid">
+                {Object.entries(songs).map(([song, data]: [string, any]) => {
+                  // Normalise: tones array (multi-rig) or single pedals entry
+                  const tones = data.tones ?? [{ label: null, pedals: data.pedals, notes: data.notes }];
+                  const isMultiRig = tones.length > 1 || tones.some((t: any) => t.label);
+                  return (
+                    <div class={`song-row${isMultiRig ? ' song-row--multi' : ''}`} data-song={song}>
+
+                      {/* Single rig — existing layout: pedal left, info right */}
+                      {!isMultiRig && (
+                        <>
+                          <div class="pedals-row">
+                            {tones[0].pedals.map((p: any) => (
+                              <div data-pedal-id={p.pedal} style="text-align:center;">
+                                <PedalDiagram pedalId={p.pedal} settings={p.settings} size={120}/>
+                              </div>
+                            ))}
+                          </div>
+                          <div class="song-info">
+                            <div class="song-title-row">
+                              <div class="song-title">{song}</div>
+                              {data.videoId && (
+                                <a href={`https://youtube.com/watch?v=${data.videoId}`} target="_blank" rel="noopener" class="watch-btn">▶ watch</a>
+                              )}
+                            </div>
+                            {tones[0].notes && <div class="song-notes">{tones[0].notes}</div>}
+                          </div>
+                        </>
+                      )}
+
+                      {/* Multi-rig — title row full width, then one block per rig */}
+                      {isMultiRig && (
+                        <>
+                          <div class="song-title-row">
+                            <div class="song-title">{song}</div>
+                            {data.videoId && (
+                              <a href={`https://youtube.com/watch?v=${data.videoId}`} target="_blank" rel="noopener" class="watch-btn">▶ watch</a>
+                            )}
+                          </div>
+                          <div class="song-rigs">
+                            {tones.map((rig: any) => (
+                              <div class="rig">
+                                {rig.label && <div class="rig-label">{rig.label}</div>}
+                                <div class="rig-body">
+                                  <div class="pedals-row">
+                                    {rig.pedals.map((p: any) => (
+                                      <div data-pedal-id={p.pedal} style="text-align:center;">
+                                        <PedalDiagram pedalId={p.pedal} settings={p.settings} size={120}/>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  {rig.notes && <div class="song-notes">{rig.notes}</div>}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -257,6 +466,87 @@ const bands = Object.entries(TONE_SETTINGS);
   </div>
 
 <script>
+  // ── LIGHTBOX ──────────────────────────────────────────────────────────────
+  (function () {
+    // Build overlay once and reuse
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'lightbox-close';
+    closeBtn.setAttribute('aria-label', 'Close');
+    closeBtn.textContent = '✕';
+
+    const inner = document.createElement('div');
+    inner.className = 'lightbox-inner';
+
+    const pedalHolder = document.createElement('div');
+    const caption = document.createElement('div');
+    caption.className = 'lightbox-caption';
+
+    inner.appendChild(pedalHolder);
+    inner.appendChild(caption);
+    overlay.appendChild(closeBtn);
+    overlay.appendChild(inner);
+    document.body.appendChild(overlay);
+
+    function formatPedalName(id) {
+      return id.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    function openLightbox(pedalWrap, songName, pedalId) {
+      // Clone the SVG and resize it
+      const svg = pedalWrap.querySelector('svg');
+      if (!svg) return;
+      const clone = svg.cloneNode(true);
+      const isMobile = window.innerWidth < 640;
+      const scale = isMobile ? 2 : 2.5;
+      const origW = parseFloat(svg.getAttribute('width') || '120');
+      const origH = parseFloat(svg.getAttribute('height') || '220');
+      clone.setAttribute('width', origW * scale);
+      clone.setAttribute('height', origH * scale);
+
+      pedalHolder.innerHTML = '';
+      pedalHolder.appendChild(clone);
+
+      caption.innerHTML =
+        `<span class="cap-song">${songName}</span>` +
+        `<span class="cap-pedal">${formatPedalName(pedalId)}</span>`;
+
+      overlay.classList.add('is-open');
+      closeBtn.focus();
+    }
+
+    function closeLightbox() {
+      overlay.classList.remove('is-open');
+    }
+
+    // Click backdrop to close (but not the inner content)
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeLightbox();
+    });
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+    });
+
+    // Wire up all pedal diagrams
+    document.querySelectorAll('.pedal-wrap').forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        const songRow = wrap.closest('[data-song]');
+        const pedalContainer = wrap.closest('[data-pedal-id]');
+        const songName = songRow?.dataset.song ?? '';
+        const pedalId = pedalContainer?.dataset.pedalId ?? '';
+        openLightbox(wrap, songName, pedalId);
+      });
+    });
+  })();
+
+  // ── BAND FILTER ───────────────────────────────────────────────────────────
   const filterBtns = document.querySelectorAll('.filter-btn');
   const bandBlocks = document.querySelectorAll('.band-block');
 
