@@ -75,6 +75,40 @@ export const PEDALS = {
       { id: "volume", label: "Volume", x: 106, y: 98, labelPosition: "above" },
     ],
   },
+  "wah": {
+    name: "Wah",
+    brand: "JAM Pedals",
+    color: "none",             // transparent — PNG provides all the colour
+    borderColor: "none",
+    graphicType: "png-direct", // transparent PNG, no multiply blend
+    graphicPng: "/pedals/wah.png",
+    hideFootswitch: true,      // wah has no standard footswitch position
+    knobs: [],
+  },
+  "ddelay": {
+    name: "Digital Delay",
+    brand: "Boss",
+    color: "#d8e1e5",          // light blue-gray enclosure (matches Boss reference)
+    borderColor: "#a0b0b8",
+    graphicType: "boss",
+    bossModel: "",
+    bossName: "Digital Delay",
+    panelColor: "#333030",     // dark charcoal panel (matches Boss reference)
+    hideFootswitch: true,      // footswitch drawn in boss graphic block instead
+    knobColor: "#4d494d",      // dark outer ring (matches Boss reference)
+    knobInnerColor: "#00a9d8", // cyan inner fill (matches Boss reference)
+    knobStroke: "#2a2727",
+    knobOuterR: 13,
+    knobInnerR: 9,
+    knobIndicatorColor: "#1a1a1a",
+    knobLabelColor: "#ddd",
+    knobLabelOffset: 22,
+    knobs: [
+      { id: "mix",      label: "Mix",      x: 26,  y: 46 },
+      { id: "feedback", label: "Feedback", x: 66,  y: 46 },
+      { id: "time",     label: "Time",     x: 106, y: 46 },
+    ],
+  },
   "scran": {
     name: "Scran",
     brand: "SoundLad Liverpool",
@@ -140,6 +174,7 @@ export const TONE_SETTINGS = {
           {
             label: "Mike McCready — Lead",
             pedals: [
+              { pedal: "wah", settings: {} },
               { pedal: "1991", settings: { gain1: 90, gain2: 50, volume: 70, bass: 55, middle: 45, treble: 54 } },
               { pedal: "dirt",  settings: { gain: 65, volume: 60, bass: 55, middle: 50, treble: 45 } },
             ],
@@ -158,10 +193,12 @@ export const TONE_SETTINGS = {
           {
             label: "Mike McCready — Lead",
             pedals: [
+              { pedal: "wah", settings: {} },
               { pedal: "1991", settings: { gain1: 85, gain2: 60, volume: 65, bass: 50, middle: 55, treble: 50 } },
+              { pedal: "ddelay", settings: { mix: 50, feedback: 40, time: 60 } },
               { pedal: "dirt",  settings: { gain: 65, volume: 60, bass: 55, middle: 50, treble: 45 } },
             ],
-            notes: "Bridge pickup. Amp set on very edge of breakup.",
+            notes: "Neck pickup for verse. Bridge pickup for rest. Amp set on very edge of breakup. 2 delay settings",
           },
         ],
       },
@@ -577,10 +614,77 @@ export const TONE_SETTINGS = {
     },
   },
   "Queens Of The Stone Age": {
+      "Queens of the Stone Age (1998)": {
+      "Regular John": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 83, tone: 50, volume: 70 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+        "If Only": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 50, tone: 100, volume: 70 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+    },
+    "Rated R (2000)": {
+      "Feel Good Hit of the Summer": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 65, tone: 35, volume: 100 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+      "The Lost Art of Keeping a Secret": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 50, tone: 45, volume: 65 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+    },
     "Songs for the Deaf (2002)": {
       "No One Knows": {
         videoId: null,
-        pedals: [{ pedal: "skeleton-key", settings: { gain: 55, tone: 25, volume: 65 } }],
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 55, tone: 25, volume: 70 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+      "First It Giveth": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 83, tone: 0, volume: 100 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+        "A Song for the Dead": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 83, tone: 40, volume: 83 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+        "Go With The Flow": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 83, tone: 40, volume: 70 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+    },
+      "Lullabies to Paralyze (2005)": {
+      "The Lost Art of Keeping a Secret": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 83, tone: 18, volume: 70 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+    },
+      "Era Vulgaris (2007)": {
+      "Sick Sick Sick": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 83, tone: 18, volume: 83 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+    },
+      "...Like Clockwork (2013)": {
+      "I Sat by the Ocean": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 40, tone: 50, volume: 70 } }],
+        notes: "Bridge pickup. Amp set on edge of breakup.",
+      },
+    },
+      "In Times New Roman... (2023)": {
+      "Paper Machete": {
+        videoId: null,
+        pedals: [{ pedal: "skeleton-key", settings: { gain: 65, tone: 35, volume: 70 } }],
         notes: "Bridge pickup. Amp set on edge of breakup.",
       },
     },

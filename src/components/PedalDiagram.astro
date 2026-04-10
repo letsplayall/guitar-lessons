@@ -21,9 +21,15 @@ const pedal = PEDALS[pedalId];
 
 // Base64-embed PNG at build time so mix-blend-mode works reliably
 let graphicBase64: string | null = null;
-if (pedal.graphicType === 'png' && pedal.graphicPng) {
-  const filePath = path.join(process.cwd(), 'public', pedal.graphicPng);
-  graphicBase64 = fs.readFileSync(filePath).toString('base64');
+if ((pedal.graphicType === 'png' || pedal.graphicType === 'png-direct') && pedal.graphicPng) {
+  try {
+    // Strip leading slash before joining so path.join doesn't treat it as absolute on Windows
+    const relativePath = pedal.graphicPng.replace(/^\//, '');
+    const filePath = path.join(process.cwd(), 'public', relativePath);
+    graphicBase64 = fs.readFileSync(filePath).toString('base64');
+  } catch (e) {
+    console.warn(`[PedalDiagram] Could not load PNG for pedal "${pedalId}":`, e.message);
+  }
 }
 
 // 0-100 -> SVG rotation: 0% = -135deg (CCW), 50% = 0deg (noon), 100% = +135deg (CW)
@@ -83,7 +89,20 @@ const fw90s       = !toggleIsUp ? '500' : '400';
     </defs>
 
     <!-- Enclosure base -->
-    <rect x="6" y="6" width="120" height="230" rx="12" fill={pedal.color}/>
+    {pedal.color !== 'none' && (
+      <rect x="6" y="6" width="120" height="230" rx="12" fill={pedal.color}/>
+    )}
+
+    <!-- PNG direct: transparent PNG rendered as-is, no blend mode -->
+    {pedal.graphicType === 'png-direct' && graphicBase64 && (
+      <image
+        href={`data:image/png;base64,${graphicBase64}`}
+        x="6" y="6"
+        width="120" height="230"
+        clip-path={`url(#${clipId})`}
+        preserveAspectRatio="xMidYMid meet"
+      />
+    )}
 
     <!-- PNG overlay: must be a direct SVG child (not inside <g>) for multiply blend to work -->
     {pedal.graphicType === 'png' && graphicBase64 && (
@@ -144,6 +163,29 @@ const fw90s       = !toggleIsUp ? '500' : '400';
         >{pedal.graphic}</text>
       )}
 
+      <!-- Boss-style pedal -->
+      {pedal.graphicType === 'boss' && (
+        <Fragment>
+          {/* Dark top panel — clip-path handles rounded top corners automatically */}
+          <rect x="6" y="6" width="120" height="82" fill={pedal.panelColor ?? '#333030'}/>
+
+          {/* LED — centred near top of dark panel */}
+          <circle cx="66" cy="20" r="5" fill="#cc0000" opacity="0.9"/>
+          <circle cx="66" cy="20" r="3" fill="#ff5555" opacity="0.8"/>
+          <circle cx="66" cy="20" r="1.5" fill="#ffaaaa" opacity="0.6"/>
+
+          {/* Pedal name — centred italic, in cream middle section */}
+          <text x="66" y="120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-style="italic" font-weight="700" fill={pedal.panelColor ?? '#333030'} letter-spacing="0.2">{pedal.bossName}</text>
+
+          {/* Dark rubber footswitch section — clip-path handles rounded bottom corners */}
+          <rect x="6" y="148" width="120" height="88" fill={pedal.panelColor ?? '#333030'}/>
+          {/* Inner footswitch raised pad */}
+          <rect x="10" y="152" width="112" height="80" rx="8" fill="#3d3a3a"/>
+          {/* Subtle top sheen */}
+          <rect x="10" y="152" width="112" height="12" rx="8" fill="white" opacity="0.04"/>
+        </Fragment>
+      )}
+
       <!-- Label-box graphic (black box + italic text) -->
       {pedal.graphicType === 'label-box' && pedal.graphic && (
         <g transform="translate(66, 140) rotate(-90)">
@@ -162,7 +204,9 @@ const fw90s       = !toggleIsUp ? '500' : '400';
     </g>
 
     <!-- Border (drawn after graphic so it sits on top) -->
-    <rect x="6" y="6" width="120" height="230" rx="12" fill="none" stroke={pedal.borderColor} stroke-width="1.5"/>
+    {pedal.borderColor !== 'none' && (
+      <rect x="6" y="6" width="120" height="230" rx="12" fill="none" stroke={pedal.borderColor} stroke-width="1.5"/>
+    )}
 
     <!-- Knobs (drawn after clipPath group so they sit on top of the flag) -->
     {pedal.knobs.map((knob: any) => {
@@ -215,8 +259,12 @@ const fw90s       = !toggleIsUp ? '500' : '400';
     )}
 
     <!-- Footswitch -->
-    <circle cx="66" cy="206" r="18" fill="#e0e0e0" stroke="#bbb" stroke-width="2"/>
-    <circle cx="66" cy="206" r="7" fill="#999"/>
+    {!pedal.hideFootswitch && (
+      <Fragment>
+        <circle cx="66" cy="206" r="18" fill="#e0e0e0" stroke="#bbb" stroke-width="2"/>
+        <circle cx="66" cy="206" r="7" fill="#999"/>
+      </Fragment>
+    )}
   </svg>
 </div>
 
