@@ -109,6 +109,30 @@ export const PEDALS = {
       { id: "time",     label: "Time",     x: 106, y: 46 },
     ],
   },
+  "univibe": {
+    name: "Chorus / Vibrato",
+    brand: "JAM Pedals",
+    color: "#7342b8",
+    borderColor: "#5c2e96",
+    graphicType: "floral",
+    hideToggleLabels: true,  // C/V labels drawn directly in the floral graphic
+    toggleUpValue: 'C',      // settings value meaning toggle-up (Chorus)
+    toggleLabel1: 'V',       // down = Vibrato
+    toggleLabel2: 'C',       // up = Chorus
+    knobColor: "#6838a8",
+    knobInnerColor: "#7a48c5",
+    knobStroke: "#4a2880",
+    knobOuterR: 13,
+    knobInnerR: 9,
+    knobIndicatorColor: "#fff",
+    knobLabelColor: "#fff",
+    knobLabelOffset: 22,
+    knobs: [
+      { id: "depth", label: "Depth", x: 28,  y: 38 },
+      { id: "cv",    type: "toggle", x: 66,  y: 38 },
+      { id: "speed", label: "Speed", x: 104, y: 38 },
+    ],
+  },
   "scran": {
     name: "Scran",
     brand: "SoundLad Liverpool",
@@ -168,15 +192,14 @@ export const TONE_SETTINGS = {
         tones: [
           {
             label: "Stone Gossard — Rhythm",
-            pedals: [{ pedal: "1991", settings: { gain1: 90, gain2: 50, volume: 70, bass: 55, middle: 45, treble: 54 } }],
+            pedals: [{ pedal: "1991", settings: { gain1: 100, gain2: 50, volume: 70, bass: 65, middle: 65, treble: 65 } }],
             notes: "Bridge pickup. Amp set on very edge of breakup.",
           },
           {
             label: "Mike McCready — Lead",
             pedals: [
               { pedal: "wah", settings: {} },
-              { pedal: "1991", settings: { gain1: 90, gain2: 50, volume: 70, bass: 55, middle: 45, treble: 54 } },
-              { pedal: "dirt",  settings: { gain: 65, volume: 60, bass: 55, middle: 50, treble: 45 } },
+              { pedal: "1991", settings: { gain1: 100, gain2: 100, volume: 70, bass: 55, middle: 45, treble: 54 } },
             ],
             notes: "Bridge pickup. Amp set on very edge of breakup.",
           },
@@ -196,7 +219,6 @@ export const TONE_SETTINGS = {
               { pedal: "wah", settings: {} },
               { pedal: "1991", settings: { gain1: 85, gain2: 60, volume: 65, bass: 50, middle: 55, treble: 50 } },
               { pedal: "ddelay", settings: { mix: 50, feedback: 40, time: 60 } },
-              { pedal: "dirt",  settings: { gain: 65, volume: 60, bass: 55, middle: 50, treble: 45 } },
             ],
             notes: "Neck pickup for verse. Bridge pickup for rest. Amp set on very edge of breakup. 2 delay settings",
           },
@@ -214,6 +236,7 @@ export const TONE_SETTINGS = {
             label: "Mike McCready — Lead",
             pedals: [
               { pedal: "1991", settings: { gain1: 100, gain2: 50, volume: 70, bass: 50, middle: 50, treble: 50 } },
+              { pedal: "univibe", settings: { depth: 60, cv: "C", speed: 45 } },
               { pedal: "dirt",  settings: { gain: 65, volume: 60, bass: 55, middle: 50, treble: 45 } },
             ],
             notes: "Bridge pickup. Amp set on very edge of breakup.",

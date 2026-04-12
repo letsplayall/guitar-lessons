@@ -61,16 +61,20 @@ const indY1 = -(knobOuterR - 12); // e.g. r=14 → -2, r=15 → -3
 const indY2 = -(knobOuterR - 6);  // e.g. r=14 → -8, r=15 → -9
 
 // Toggle pre-computation
-const toggleKnob  = pedal.knobs.find((k: any) => k.type === 'toggle');
-const toggleVal   = toggleKnob ? (settings[toggleKnob.id] ?? '00s') : null;
-const toggleIsUp  = toggleVal === '00s';
-const toggleY     = toggleKnob
+const toggleKnob     = pedal.knobs.find((k: any) => k.type === 'toggle');
+const toggleUpValue  = pedal.toggleUpValue ?? '00s';   // which settings value means "up"
+const toggleVal      = toggleKnob ? (settings[toggleKnob.id] ?? toggleUpValue) : null;
+const toggleIsUp     = toggleVal === toggleUpValue;
+const toggleY        = toggleKnob
   ? (toggleKnob.y !== undefined ? toggleKnob.y : BOTTOM_Y)
   : BOTTOM_Y;
-const color00s    = toggleIsUp  ? '#e8ff47' : 'rgba(255,255,255,0.4)';
-const color90s    = !toggleIsUp ? '#e8ff47' : 'rgba(255,255,255,0.4)';
-const fw00s       = toggleIsUp  ? '500' : '400';
-const fw90s       = !toggleIsUp ? '500' : '400';
+const toggleLabel1   = pedal.toggleLabel1 ?? '90s';    // shown when toggle is DOWN
+const toggleLabel2   = pedal.toggleLabel2 ?? '00s';    // shown when toggle is UP
+const toggleLabelY   = toggleY + 28;                   // position below toggle body
+const colorDown      = !toggleIsUp ? '#e8ff47' : 'rgba(255,255,255,0.4)';
+const colorUp        = toggleIsUp  ? '#e8ff47' : 'rgba(255,255,255,0.4)';
+const fwDown         = !toggleIsUp ? '500' : '400';
+const fwUp           = toggleIsUp  ? '500' : '400';
 ---
 
 <div class="pedal-wrap" style="isolation: auto;">
@@ -186,6 +190,48 @@ const fw90s       = !toggleIsUp ? '500' : '400';
         </Fragment>
       )}
 
+      <!-- Floral / JAM Pedals style -->
+      {pedal.graphicType === 'floral' && (
+        <Fragment>
+          {/* Main large daisy — white petals, yellow/orange centre */}
+          <g transform="translate(72, 148)">
+            {([0, 45, 90, 135, 180, 225, 270, 315] as number[]).map((a: number) => (
+              <ellipse cx="0" cy="-25" rx="9" ry="21" fill="white" opacity="0.96" transform={`rotate(${a})`}/>
+            ))}
+            <circle r="23" fill="#f5d800"/>
+            <circle r="15" fill="#e85a0a"/>
+            <circle r="7"  fill="#ff2200" opacity="0.9"/>
+          </g>
+
+          {/* Small dark flower — left */}
+          <g transform="translate(22, 147)">
+            {([0, 45, 90, 135, 180, 225, 270, 315] as number[]).map((a: number) => (
+              <ellipse cx="0" cy="-14" rx="5" ry="12" fill="#111" transform={`rotate(${a})`}/>
+            ))}
+            <circle r="11" fill="#f06010"/>
+          </g>
+
+          {/* Small orange/red flower — bottom right */}
+          <g transform="translate(107, 184)">
+            {([0, 40, 80, 120, 160, 200, 240, 280, 320] as number[]).map((a: number) => (
+              <ellipse cx="0" cy="-12" rx="5" ry="11" fill="#e02010" transform={`rotate(${a})`}/>
+            ))}
+            <circle r="11" fill="#f0c010"/>
+          </g>
+
+          {/* vibe brand text */}
+          <text x="16" y="215" font-family="'Arial Black', Arial, sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1" opacity="0.9">vibe</text>
+
+          {/* C / V labels flanking the toggle — C=left (chorus), V=right (vibrato) */}
+          {toggleKnob && (
+            <Fragment>
+              <text x={toggleKnob.x - 14} y={toggleY + 3} text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" font-weight="600" fill={colorUp}   opacity="0.9">C</text>
+              <text x={toggleKnob.x + 14} y={toggleY + 3} text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" font-weight="600" fill={colorDown} opacity="0.9">V</text>
+            </Fragment>
+          )}
+        </Fragment>
+      )}
+
       <!-- Label-box graphic (black box + italic text) -->
       {pedal.graphicType === 'label-box' && pedal.graphic && (
         <g transform="translate(66, 140) rotate(-90)">
@@ -242,19 +288,35 @@ const fw90s       = !toggleIsUp ? '500' : '400';
     <!-- Toggle switch -->
     {toggleKnob && (
       <g transform={`translate(${toggleKnob.x},${toggleY})`}>
-        <rect x="-8" y="-12" width="16" height="24" rx="3" fill="#333" stroke="#555" stroke-width="1"/>
-        {toggleIsUp && <rect x="-2.5" y="-18" width="5" height="14" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
-        {toggleIsUp && <circle cx="0" cy="-19" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
-        {!toggleIsUp && <rect x="-2.5" y="4" width="5" height="14" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
-        {!toggleIsUp && <circle cx="0" cy="19" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
+        {pedal.toggleOrientation === 'horizontal' ? (
+          <Fragment>
+            {/* Horizontal body */}
+            <rect x="-12" y="-8" width="24" height="16" rx="3" fill="#333" stroke="#555" stroke-width="1"/>
+            {/* Left lever (C / chorus) */}
+            {toggleIsUp && <rect x="-22" y="-2.5" width="12" height="5" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
+            {toggleIsUp && <circle cx="-22" cy="0" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
+            {/* Right lever (V / vibrato) */}
+            {!toggleIsUp && <rect x="10" y="-2.5" width="12" height="5" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
+            {!toggleIsUp && <circle cx="22" cy="0" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
+          </Fragment>
+        ) : (
+          <Fragment>
+            {/* Vertical body */}
+            <rect x="-8" y="-12" width="16" height="24" rx="3" fill="#333" stroke="#555" stroke-width="1"/>
+            {toggleIsUp && <rect x="-2.5" y="-18" width="5" height="14" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
+            {toggleIsUp && <circle cx="0" cy="-19" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
+            {!toggleIsUp && <rect x="-2.5" y="4" width="5" height="14" rx="2.5" fill="#bbb" stroke="#999" stroke-width="0.5"/>}
+            {!toggleIsUp && <circle cx="0" cy="19" r="3.5" fill="#ddd" stroke="#aaa" stroke-width="0.5"/>}
+          </Fragment>
+        )}
       </g>
     )}
 
-    <!-- Toggle era labels -->
-    {toggleKnob && (
+    <!-- Toggle era labels (suppressed when pedal.hideToggleLabels is true) -->
+    {!pedal.hideToggleLabels && toggleKnob && (
       <Fragment>
-        <text x="54" y="128" text-anchor="middle" fill={color90s} font-size="6" font-family="IBM Plex Mono, monospace" font-weight={fw90s}>▼ 90s</text>
-        <text x="78" y="128" text-anchor="middle" fill={color00s} font-size="6" font-family="IBM Plex Mono, monospace" font-weight={fw00s}>00s ▲</text>
+        <text x={toggleKnob.x - 12} y={toggleLabelY} text-anchor="middle" fill={colorDown} font-size="6" font-family="IBM Plex Mono, monospace" font-weight={fwDown}>▼ {toggleLabel1}</text>
+        <text x={toggleKnob.x + 12} y={toggleLabelY} text-anchor="middle" fill={colorUp}   font-size="6" font-family="IBM Plex Mono, monospace" font-weight={fwUp}>{toggleLabel2} ▲</text>
       </Fragment>
     )}
 
