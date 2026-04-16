@@ -1,9 +1,9 @@
 {
-  "exportedAt": "2026-04-09T09:46:56.009Z",
+  "exportedAt": "2026-04-16T07:55:02.465Z",
   "stats": {
-    "totalVideos": 1064,
-    "coveredSongs": 503,
-    "totalSongs": 1929,
+    "totalVideos": 1067,
+    "coveredSongs": 501,
+    "totalSongs": 1928,
     "variousSongs": 175
   },
   "bands": [
@@ -1615,7 +1615,7 @@
               "covered": false,
               "videoId": null,
               "watchUrl": null,
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/nirvana-mtv-tab-42927927"
             },
             {
               "name": "Territorial Pissings",
@@ -1811,7 +1811,7 @@
               "covered": false,
               "videoId": null,
               "watchUrl": null,
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/nirvana-mtv-tab-42927927"
             },
             {
               "name": "On a Plain",
@@ -2564,9 +2564,9 @@
     {
       "name": "Soundgarden",
       "slug": "soundgarden",
-      "coveredCount": 28,
-      "totalCount": 82,
-      "coveragePct": 34,
+      "coveredCount": 26,
+      "totalCount": 81,
+      "coveragePct": 32,
       "albums": [
         {
           "name": "Ultramega OK (1988)",
@@ -2752,8 +2752,8 @@
         },
         {
           "name": "Badmotorfinger (1991)",
-          "coveredCount": 8,
-          "totalCount": 13,
+          "coveredCount": 5,
+          "totalCount": 12,
           "songs": [
             {
               "name": "Rusty Cage",
@@ -2770,10 +2770,10 @@
               "tabUrl": "https://www.patreon.com/posts/soundgarden-tab-43537037"
             },
             {
-              "name": "Slaves and Bulldozers",
-              "covered": true,
-              "videoId": "otJ3Gc7BHpU",
-              "watchUrl": "https://youtube.com/watch?v=otJ3Gc7BHpU",
+              "name": "Slaves & Bulldozers",
+              "covered": false,
+              "videoId": null,
+              "watchUrl": null,
               "tabUrl": null
             },
             {
@@ -2819,18 +2819,11 @@
               "tabUrl": null
             },
             {
-              "name": "My Wave",
-              "covered": true,
-              "videoId": "o_tc2gyjxD4",
-              "watchUrl": "https://youtube.com/watch?v=o_tc2gyjxD4",
-              "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-64658808"
-            },
-            {
-              "name": "The Day I Tried to Live",
-              "covered": true,
-              "videoId": "MpLKv32T68Y",
-              "watchUrl": "https://youtube.com/watch?v=MpLKv32T68Y",
-              "tabUrl": "https://www.patreon.com/posts/soundgarden-day-67597435"
+              "name": "Drawing Flies",
+              "covered": false,
+              "videoId": null,
+              "watchUrl": null,
+              "tabUrl": null
             },
             {
               "name": "Holy Water",
@@ -2850,15 +2843,15 @@
         },
         {
           "name": "Superunknown (1994)",
-          "coveredCount": 12,
+          "coveredCount": 13,
           "totalCount": 15,
           "songs": [
             {
               "name": "Let Me Drown",
-              "covered": false,
-              "videoId": null,
-              "watchUrl": null,
-              "tabUrl": null
+              "covered": true,
+              "videoId": "IVkXVLkVDuw",
+              "watchUrl": "https://youtube.com/watch?v=IVkXVLkVDuw",
+              "tabUrl": "https://www.patreon.com/posts/soundgarden-let-155549042"
             },
             {
               "name": "My Wave",
@@ -4269,7 +4262,7 @@
               "covered": false,
               "videoId": null,
               "watchUrl": null,
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/smashing-hummer-46121822"
             },
             {
               "name": "A Punchup at a Wedding",
@@ -4663,7 +4656,7 @@
               "covered": true,
               "videoId": "FljN0L56f3g",
               "watchUrl": "https://youtube.com/watch?v=FljN0L56f3g",
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-88237994"
             },
             {
               "name": "My Poor Brain",
@@ -5946,7 +5939,7 @@
               "covered": true,
               "videoId": "QPhqWq40TsA",
               "watchUrl": "https://youtube.com/watch?v=QPhqWq40TsA",
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-54392863"
             },
             {
               "name": "I Never Came",
@@ -13095,7 +13088,7 @@
               "covered": true,
               "videoId": "jdcnpKKJusM",
               "watchUrl": "https://youtube.com/watch?v=jdcnpKKJusM",
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/blind-melon-tab-135768396"
             },
             {
               "name": "Seed to a Tree",
@@ -13186,7 +13179,7 @@
               "covered": true,
               "videoId": "LsMElJTvBPP_HwyP",
               "watchUrl": "https://youtube.com/watch?v=LsMElJTvBPP_HwyP",
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-103661835"
             },
             {
               "name": "The Duke",
@@ -13235,7 +13228,7 @@
               "covered": true,
               "videoId": "rK12oXiCTkA",
               "watchUrl": "https://youtube.com/watch?v=rK12oXiCTkA",
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/blind-melon-tab-112801610"
             },
             {
               "name": "Hell",
