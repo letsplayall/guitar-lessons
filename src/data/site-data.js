@@ -88,25 +88,25 @@ export const PEDALS = {
   "ddelay": {
     name: "Digital Delay",
     brand: "Boss",
-    color: "#d8e1e5",          // light blue-gray enclosure (matches Boss reference)
-    borderColor: "#a0b0b8",
-    graphicType: "boss",
-    bossModel: "",
+    color: "#E4EEF2",          // light blue-gray enclosure
+    borderColor: "none",
+    graphicType: "boss-dd",
     bossName: "Digital Delay",
-    panelColor: "#333030",     // dark charcoal panel (matches Boss reference)
-    hideFootswitch: true,      // footswitch drawn in boss graphic block instead
-    knobColor: "#4d494d",      // dark outer ring (matches Boss reference)
-    knobInnerColor: "#00a9d8", // cyan inner fill (matches Boss reference)
+    panelColor: "#333030",
+    hideFootswitch: true,      // footswitch drawn in boss-dd graphic block
+    knobColor: "#4d494d",      // dark outer ring
+    knobInnerColor: "#00a9d8", // cyan inner fill
     knobStroke: "#2a2727",
     knobOuterR: 13,
     knobInnerR: 9,
-    knobIndicatorColor: "#1a1a1a",
-    knobLabelColor: "#ddd",
-    knobLabelOffset: 22,
+    knobIndicatorColor: "#4d494d",
+    knobLabelColor: "#8aa0b2",
+    knobLabelSize: 5,
+    knobLabelOffset: 30,
+    // settings keys: elevel (0-100), fback (0-100), delayTime (0-999 ms)
     knobs: [
-      { id: "mix",      label: "Mix",      x: 26,  y: 46 },
-      { id: "feedback", label: "Feedback", x: 66,  y: 46 },
-      { id: "time",     label: "Time",     x: 106, y: 46 },
+      { id: "elevel", label: "E.Level", x: 28, y: 42 },
+      { id: "fback",  label: "F.Back",  x: 59, y: 42 },
     ],
   },
   "univibe": {
