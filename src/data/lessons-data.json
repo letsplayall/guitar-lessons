@@ -1,8 +1,8 @@
 {
-  "exportedAt": "2026-04-26T07:37:58.926Z",
+  "exportedAt": "2026-04-26T08:12:09.696Z",
   "stats": {
-    "totalVideos": 1067,
-    "coveredSongs": 501,
+    "totalVideos": 1069,
+    "coveredSongs": 502,
     "totalSongs": 1928,
     "variousSongs": 175
   },
@@ -1200,7 +1200,7 @@
               "covered": true,
               "videoId": "rwEedqCeWR0",
               "watchUrl": "https://youtube.com/watch?v=rwEedqCeWR0",
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/eddie-vedder-tab-129677329"
             }
           ]
         },
@@ -1291,7 +1291,7 @@
               "covered": true,
               "videoId": "voL_MKfA0hw",
               "watchUrl": "https://youtube.com/watch?v=voL_MKfA0hw",
-              "tabUrl": null
+              "tabUrl": "https://www.patreon.com/posts/pearl-jam-river-33440062"
             }
           ]
         },
@@ -5589,13 +5589,13 @@
     {
       "name": "Queens of the Stone Age",
       "slug": "queens-of-the-stone-age",
-      "coveredCount": 20,
+      "coveredCount": 21,
       "totalCount": 94,
-      "coveragePct": 21,
+      "coveragePct": 22,
       "albums": [
         {
           "name": "Queens of the Stone Age (1998)",
-          "coveredCount": 3,
+          "coveredCount": 4,
           "totalCount": 11,
           "songs": [
             {
@@ -5635,10 +5635,10 @@
             },
             {
               "name": "How to Handle a Rope",
-              "covered": false,
-              "videoId": null,
-              "watchUrl": null,
-              "tabUrl": null
+              "covered": true,
+              "videoId": "6MKitBx2IJA",
+              "watchUrl": "https://youtube.com/watch?v=6MKitBx2IJA",
+              "tabUrl": "https://www.patreon.com/posts/queens-of-stone-156176512"
             },
             {
               "name": "Mexicola",
@@ -14953,7 +14953,7 @@
           "name": "Not Enough",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/3-doors-down-not-122128353"
         }
       ]
     },
@@ -14995,7 +14995,7 @@
           "name": "Waters Rising",
           "videoId": "IkrPzYohYKU",
           "watchUrl": "https://youtube.com/watch?v=IkrPzYohYKU",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/alter-bridge-tab-41679628"
         }
       ]
     },
@@ -15031,7 +15031,7 @@
           "name": "Patio",
           "videoId": "q75VkC12G8k",
           "watchUrl": "https://youtube.com/watch?v=q75VkC12G8k",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/asia-menor-patio-137807594"
         }
       ]
     },
@@ -15055,7 +15055,7 @@
           "name": "Welcome To Hell",
           "videoId": "UdSBY797d8g",
           "watchUrl": "https://youtube.com/watch?v=UdSBY797d8g",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/black-midi-to-86754454"
         }
       ]
     },
@@ -15079,7 +15079,7 @@
           "name": "Again",
           "videoId": "FrU7YGn1ELw",
           "watchUrl": "https://youtube.com/watch?v=FrU7YGn1ELw",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/black-stone-tab-40434560"
         }
       ]
     },
@@ -15121,7 +15121,7 @@
           "name": "Comedown",
           "videoId": "hEG0CCnSTjM",
           "watchUrl": "https://youtube.com/watch?v=hEG0CCnSTjM",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/bush-comedown-119728997"
         },
         {
           "name": "Swallowed",
@@ -15187,7 +15187,7 @@
           "name": "My Mind Is A Mountain",
           "videoId": "tV6m7RrvKys",
           "watchUrl": "https://youtube.com/watch?v=tV6m7RrvKys",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/deftones-my-mind-134714722"
         }
       ]
     },
@@ -15211,7 +15211,7 @@
           "name": "Eruption",
           "videoId": "zLj1wG05T8g",
           "watchUrl": "https://youtube.com/watch?v=zLj1wG05T8g",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/evh-eruption-tab-42667253"
         }
       ]
     },
@@ -15223,37 +15223,37 @@
           "name": "Society",
           "videoId": "0yngHSkOtBQ",
           "watchUrl": "https://youtube.com/watch?v=0yngHSkOtBQ",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/eddie-vedder-tab-43260869"
         },
         {
           "name": "Far Behind",
           "videoId": "FF7H1v_1K-s",
           "watchUrl": "https://youtube.com/watch?v=FF7H1v_1K-s",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/eddie-vedder-far-36563639"
         },
         {
           "name": "Future Days",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/eddie-vedder-tab-129677329"
         },
         {
           "name": "Cartography",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/eddie-vedder-tab-41601258"
         },
         {
           "name": "Can't Keep",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/eddie-vedder-uke-39777284"
         },
         {
           "name": "Sleeping By Myself",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/eddie-vedder-by-39679568"
         }
       ]
     },
@@ -15313,7 +15313,7 @@
           "name": "Starburster",
           "videoId": "qqP-bGFPPYw",
           "watchUrl": "https://youtube.com/watch?v=qqP-bGFPPYw",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/mobland-theme-d-130275866"
         }
       ]
     },
@@ -15337,7 +15337,7 @@
           "name": "Falling Slowly",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/glen-hansard-tab-70005917"
         }
       ]
     },
@@ -15349,7 +15349,7 @@
           "name": "Make No Sound",
           "videoId": "WNvZvnAbPkI",
           "watchUrl": "https://youtube.com/watch?v=WNvZvnAbPkI",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/gomez-make-no-48120433"
         }
       ]
     },
@@ -15391,7 +15391,7 @@
           "name": "Racked",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/gruntruck-racked-117545380"
         }
       ]
     },
@@ -15403,13 +15403,13 @@
           "name": "Welcome To The Jungle",
           "videoId": "3NnHSg3V4kY",
           "watchUrl": "https://youtube.com/watch?v=3NnHSg3V4kY",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/guns-nroses-to-114642421"
         },
         {
           "name": "Nightrain",
           "videoId": "zVidNG-57to",
           "watchUrl": "https://youtube.com/watch?v=zVidNG-57to",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/gunsnroses-tab-90180061"
         }
       ]
     },
@@ -15421,7 +15421,7 @@
           "name": "Celebrity Skin",
           "videoId": "RS81K6CJwxo",
           "watchUrl": "https://youtube.com/watch?v=RS81K6CJwxo",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/hole-celebrity-138931960"
         }
       ]
     },
@@ -15433,13 +15433,13 @@
           "name": "The Pod",
           "videoId": "-_2GkwlAPS0",
           "watchUrl": "https://youtube.com/watch?v=-_2GkwlAPS0",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/hum-pod-guitar-142831364"
         },
         {
           "name": "I Hate It Too",
           "videoId": "XbN2a_8zM0E",
           "watchUrl": "https://youtube.com/watch?v=XbN2a_8zM0E",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/hum-i-hate-it-127914122"
         },
         {
           "name": "Stars",
@@ -15469,7 +15469,7 @@
           "name": "Wish You Were Here",
           "videoId": "_Wl8luXVlTc",
           "watchUrl": "https://youtube.com/watch?v=_Wl8luXVlTc",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/incubus-wish-you-152524486"
         },
         {
           "name": "Dig",
@@ -15493,7 +15493,7 @@
           "name": "Maiden The Number Of The Beast",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/iron-maiden-of-149072720"
         }
       ]
     },
@@ -15517,7 +15517,7 @@
           "name": "White - Old Scratch Blues",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/jack-white-old-112152201"
         }
       ]
     },
@@ -15529,7 +15529,7 @@
           "name": "Better Together",
           "videoId": "8jit3_akkHs",
           "watchUrl": "https://youtube.com/watch?v=8jit3_akkHs",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/jack-johnson-tab-44174260"
         }
       ]
     },
@@ -15541,7 +15541,7 @@
           "name": "Bombing Out",
           "videoId": "s5N-Mcq05-w",
           "watchUrl": "https://youtube.com/watch?v=s5N-Mcq05-w",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/jack-white-out-120111471"
         },
         {
           "name": "Old Scratch Blues",
@@ -15583,7 +15583,7 @@
           "name": "Only Children",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/jason-isbell-400-46040835"
         }
       ]
     },
@@ -15595,7 +15595,7 @@
           "name": "Cold Hard Bitch",
           "videoId": "zdIGkpbMrRQ",
           "watchUrl": "https://youtube.com/watch?v=zdIGkpbMrRQ",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/jet-cold-hard-145017411"
         }
       ]
     },
@@ -15607,7 +15607,7 @@
           "name": "All Along The Watchtower",
           "videoId": "vfKPcxo2WFg",
           "watchUrl": "https://youtube.com/watch?v=vfKPcxo2WFg",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/jimi-hendrix-all-34351390"
         }
       ]
     },
@@ -15619,7 +15619,7 @@
           "name": "Just Tonight",
           "videoId": "DtAgM2DzeSM",
           "watchUrl": "https://youtube.com/watch?v=DtAgM2DzeSM",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/jimmy-eat-world-47500018"
         },
         {
           "name": "Futures",
@@ -15649,7 +15649,7 @@
           "name": "Rusty Cage",
           "videoId": "E6pyAdCrFiM",
           "watchUrl": "https://youtube.com/watch?v=E6pyAdCrFiM",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/johnny-cash-cage-47639652"
         }
       ]
     },
@@ -15661,7 +15661,7 @@
           "name": "Backbone",
           "videoId": "bbVKmTrLEU8",
           "watchUrl": "https://youtube.com/watch?v=bbVKmTrLEU8",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/kaleo-backbone-136378748"
         }
       ]
     },
@@ -15673,7 +15673,7 @@
           "name": "Burn The Rain",
           "videoId": "o_t2BuHufe4",
           "watchUrl": "https://youtube.com/watch?v=o_t2BuHufe4",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/kurt-cobain-burn-141790792"
         }
       ]
     },
@@ -15685,7 +15685,7 @@
           "name": "Witch 777",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/l-witch-777-tab-148028291"
         }
       ]
     },
@@ -15733,7 +15733,7 @@
           "name": "Babe I'm Gonna Leave You",
           "videoId": "Xr-iWk6n2Oc",
           "watchUrl": "https://youtube.com/watch?v=Xr-iWk6n2Oc",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/led-zeppelin-im-46825966"
         }
       ]
     },
@@ -15757,7 +15757,7 @@
           "name": "Seabeast",
           "videoId": "NZZQXn7g9Vg",
           "watchUrl": "https://youtube.com/watch?v=NZZQXn7g9Vg",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/mastodon-guitar-147666552"
         }
       ]
     },
@@ -15781,7 +15781,7 @@
           "name": "Nunca",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/mayans-mc-intro-41742511"
         }
       ]
     },
@@ -15805,19 +15805,19 @@
           "name": "Battery",
           "videoId": "y-hHaiEM3Pk",
           "watchUrl": "https://youtube.com/watch?v=y-hHaiEM3Pk",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/metallica-tab-123168460"
         },
         {
           "name": "Lux Aeterna",
           "videoId": "Ij-Mkqqz_cE",
           "watchUrl": "https://youtube.com/watch?v=Ij-Mkqqz_cE",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-75466391"
         },
         {
           "name": "Master Of Puppets",
           "videoId": "7jW0XQ4pyhQ",
           "watchUrl": "https://youtube.com/watch?v=7jW0XQ4pyhQ",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/68613925"
         }
       ]
     },
@@ -15829,7 +15829,7 @@
           "name": "Maniac",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/michael-sembello-102541073"
         }
       ]
     },
@@ -15853,7 +15853,7 @@
           "name": "I Like It Small",
           "videoId": "3qtOqw1Bg2E",
           "watchUrl": "https://youtube.com/watch?v=3qtOqw1Bg2E",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/mudhoney-i-like-124363260"
         },
         {
           "name": "Touch Me I'm Sick",
@@ -15883,7 +15883,7 @@
           "name": "Origin of Symmetry",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/muse-origin-of-53671662"
         }
       ]
     },
@@ -15895,7 +15895,7 @@
           "name": "When You Sleep",
           "videoId": "anTZnbLTN9c",
           "watchUrl": "https://youtube.com/watch?v=anTZnbLTN9c",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/my-bloody-when-109885557"
         },
         {
           "name": "Only Shallow",
@@ -15967,7 +15967,7 @@
           "name": "Don't Speak",
           "videoId": "bxOKJ9kfqgg",
           "watchUrl": "https://youtube.com/watch?v=bxOKJ9kfqgg",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/no-doubt-dont-112552131"
         }
       ]
     },
@@ -15991,13 +15991,13 @@
           "name": "Slide Away",
           "videoId": "GqLoxBINqaY",
           "watchUrl": "https://youtube.com/watch?v=GqLoxBINqaY",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/oasis-slide-away-142480008"
         },
         {
           "name": "Supersonic",
           "videoId": "-1u59zWWWkM",
           "watchUrl": "https://youtube.com/watch?v=-1u59zWWWkM",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/oasis-supersonic-124412567"
         },
         {
           "name": "Rock 'n' Roll Star",
@@ -16033,7 +16033,7 @@
           "name": "Into The Unknown",
           "videoId": "jDKYLbD_p5U",
           "watchUrl": "https://youtube.com/watch?v=jDKYLbD_p5U",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/panic-at-disco-31825110"
         }
       ]
     },
@@ -16045,7 +16045,7 @@
           "name": "Walk",
           "videoId": "0HlbW7mJDws",
           "watchUrl": "https://youtube.com/watch?v=0HlbW7mJDws",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/pantera-walk-tab-140922947"
         }
       ]
     },
@@ -16099,7 +16099,7 @@
           "name": "Toe'n The Line",
           "videoId": "v-XpaJrp7Jg",
           "watchUrl": "https://youtube.com/watch?v=v-XpaJrp7Jg",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/pride-glory-toen-136538315"
         }
       ]
     },
@@ -16123,7 +16123,7 @@
           "name": "Bohemian Rhapsody",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/queen-bohemian-107811095"
         }
       ]
     },
@@ -16165,7 +16165,7 @@
           "name": "Memphis Son",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/rival-sons-son-38711274"
         }
       ]
     },
@@ -16219,7 +16219,7 @@
           "name": "Slave To The Grind",
           "videoId": "dEY60SIboFU",
           "watchUrl": "https://youtube.com/watch?v=dEY60SIboFU",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/skid-row-slave-52308368"
         }
       ]
     },
@@ -16243,13 +16243,13 @@
           "name": "Duality",
           "videoId": "AfDMLwb5-6Q",
           "watchUrl": "https://youtube.com/watch?v=AfDMLwb5-6Q",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/slipknot-duality-63335488"
         },
         {
           "name": "Gematria",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/slipknot-guitar-149868024"
         }
       ]
     },
@@ -16273,7 +16273,7 @@
           "name": "Runaway Train",
           "videoId": "9VIol3o1xXU",
           "watchUrl": "https://youtube.com/watch?v=9VIol3o1xXU",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/soul-asylum-tab-37653597"
         }
       ]
     },
@@ -16297,7 +16297,7 @@
           "name": "Caught By The Fuzz",
           "videoId": "ewM4hPolk6E",
           "watchUrl": "https://youtube.com/watch?v=ewM4hPolk6E",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/supergrass-by-130446818"
         }
       ]
     },
@@ -16309,7 +16309,7 @@
           "name": "Rave Down",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/swervedriver-tab-118774174"
         }
       ]
     },
@@ -16321,7 +16321,7 @@
           "name": "Chop Suey",
           "videoId": "4kRTiypv_4c",
           "watchUrl": "https://youtube.com/watch?v=4kRTiypv_4c",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/system-of-down-140135243"
         }
       ]
     },
@@ -16345,7 +16345,7 @@
           "name": "Tribute",
           "videoId": "h2oRiA6v6QY",
           "watchUrl": "https://youtube.com/watch?v=h2oRiA6v6QY",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/tenacious-d-tab-56359852"
         }
       ]
     },
@@ -16375,7 +16375,7 @@
           "name": "Your Touch",
           "videoId": "5JD3_Yklhx4",
           "watchUrl": "https://youtube.com/watch?v=5JD3_Yklhx4",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/black-keys-your-118774260"
         }
       ]
     },
@@ -16459,7 +16459,7 @@
           "name": "Timeless Melody",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/las-timeless-32627071"
         }
       ]
     },
@@ -16471,7 +16471,7 @@
           "name": "Bloodbuzz Ohio",
           "videoId": "o7WYiR-slxg",
           "watchUrl": "https://youtube.com/watch?v=o7WYiR-slxg",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/national-ohio-101996508"
         }
       ]
     },
@@ -16513,7 +16513,7 @@
           "name": "This Charming Man",
           "videoId": "eX80Xj0dvto",
           "watchUrl": "https://youtube.com/watch?v=eX80Xj0dvto",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/smiths-this-man-105187514"
         }
       ]
     },
@@ -16537,7 +16537,7 @@
           "name": "Possum Kingdom",
           "videoId": "oqRAYXHMtHo",
           "watchUrl": "https://youtube.com/watch?v=oqRAYXHMtHo",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/toadies-possum-110286917"
         },
         {
           "name": "Tyler",
@@ -16579,7 +16579,7 @@
           "name": "Ball and Chain",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/who-ball-and-tab-36026417"
         }
       ]
     },
@@ -16615,7 +16615,7 @@
           "name": "Hunger Strike",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/totd-hunger-tab-24190126"
         }
       ]
     },
@@ -16627,7 +16627,7 @@
           "name": "In The Kitchen",
           "videoId": "9eEGo3XKoSY",
           "watchUrl": "https://youtube.com/watch?v=9eEGo3XKoSY",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/umphreys-mcgee-36242098"
         }
       ]
     },
@@ -16639,7 +16639,7 @@
           "name": "Ice Cream Man",
           "videoId": "BqIV4KxOvmY",
           "watchUrl": "https://youtube.com/watch?v=BqIV4KxOvmY",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/van-halen-ice-46738697"
         }
       ]
     },
@@ -16663,7 +16663,7 @@
           "name": "Man Made Of Meat",
           "videoId": "zQxYBg8NifM",
           "watchUrl": "https://youtube.com/watch?v=zQxYBg8NifM",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/viagra-boys-man-138615470"
         }
       ]
     },
@@ -16675,7 +16675,7 @@
           "name": "U Owe It To U",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/weapon-of-choice-43820716"
         }
       ]
     },
@@ -16687,7 +16687,7 @@
           "name": "Ocean Man",
           "videoId": "aKENGDAasXw",
           "watchUrl": "https://youtube.com/watch?v=aKENGDAasXw",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/ween-ocean-man-125083259"
         }
       ]
     },
@@ -16699,7 +16699,7 @@
           "name": "Lost in the Woods",
           "videoId": null,
           "watchUrl": null,
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/weezer-lost-in-39136993"
         }
       ]
     },
