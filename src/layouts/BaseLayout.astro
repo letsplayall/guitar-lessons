@@ -21,6 +21,23 @@ const pathname = Astro.url.pathname;
   <meta name="description" content={description} />
   <title>{pageTitle}</title>
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href={new URL(Astro.url.pathname, SITE.url).toString()} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={new URL(Astro.url.pathname, SITE.url).toString()} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${SITE.url}/images/og-image.jpg`} />
+  <meta property="og:site_name" content="Let's Play All" />
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${SITE.url}/images/og-image.jpg`} />
+
   <!-- Fonts: Bebas Neue (headings) + Barlow (body) + IBM Plex Mono/Sans (UI) + Alumni Sans (pedals) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -7,6 +7,7 @@ export const SITE = {
   title: "Let's Play All",
   tagline: "Guitar Lessons // Grunge & Alt-Rock",
   url: "https://letsplayallguitar.com",
+  ogImage: '/images/og-image.jpg',
   youtube: "https://www.youtube.com/@LetsPlayAll",
   patreon: "https://www.patreon.com/letsplayall",
 };

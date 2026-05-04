@@ -9,7 +9,7 @@ const allBands = [...bands, ...various.map(v => ({ ...v, isVarious: true }))];
 const exportDate = exportedAt ? new Date(exportedAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }) : null;
 ---
 
-<BaseLayout title="Guitar Lessons" description="Browse 1,000+ grunge and alt-rock guitar lessons by band and album. Pearl Jam, Alice in Chains, Soundgarden, Nirvana and more.">
+<BaseLayout title="Guitar Lessons" description="Browse every guitar lesson by band and album. Covers Pearl Jam, Alice in Chains, Soundgarden, Nirvana, Radiohead and more. Tab links for Patreon members.">
   <style>
     /* Remove grid texture on this page — too busy with dense text */
     html { background-image: none; }

@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://letsplayallguitar.com',
-  // When hosting on GitHub Pages at a custom domain, base can stay as '/'
   base: '/',
+  integrations: [sitemap()],
 });
