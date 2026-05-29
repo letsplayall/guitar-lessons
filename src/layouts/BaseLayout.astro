@@ -21,6 +21,9 @@ const pathname = Astro.url.pathname;
   <meta name="description" content={description} />
   <title>{pageTitle}</title>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
   <!-- Canonical URL -->
   <link rel="canonical" href={new URL(Astro.url.pathname, SITE.url).toString()} />
 

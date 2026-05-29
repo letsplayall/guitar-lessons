@@ -1,10 +1,10 @@
 {
-  "exportedAt": "2026-04-26T08:12:09.696Z",
+  "exportedAt": "2026-05-29T08:56:49.924Z",
   "stats": {
-    "totalVideos": 1069,
-    "coveredSongs": 502,
+    "totalVideos": 1077,
+    "coveredSongs": 503,
     "totalSongs": 1928,
-    "variousSongs": 175
+    "variousSongs": 199
   },
   "bands": [
     {
@@ -1911,9 +1911,9 @@
     {
       "name": "Alice in Chains",
       "slug": "alice-in-chains",
-      "coveredCount": 39,
+      "coveredCount": 40,
       "totalCount": 83,
-      "coveragePct": 47,
+      "coveragePct": 48,
       "albums": [
         {
           "name": "Facelift (1990)",
@@ -2197,7 +2197,7 @@
         },
         {
           "name": "Alice in Chains (1995)",
-          "coveredCount": 7,
+          "coveredCount": 8,
           "totalCount": 12,
           "songs": [
             {
@@ -2237,10 +2237,10 @@
             },
             {
               "name": "Again",
-              "covered": false,
-              "videoId": null,
-              "watchUrl": null,
-              "tabUrl": null
+              "covered": true,
+              "videoId": "SxMUKWJVeTU",
+              "watchUrl": "https://youtube.com/watch?v=SxMUKWJVeTU",
+              "tabUrl": "https://www.patreon.com/posts/alice-in-chains-157323433"
             },
             {
               "name": "Shame in You",
@@ -15418,6 +15418,12 @@
       "slug": "v-hole",
       "songs": [
         {
+          "name": "Hit So Hard",
+          "videoId": "pQnHsxkTvrU",
+          "watchUrl": "https://youtube.com/watch?v=pQnHsxkTvrU",
+          "tabUrl": "https://www.patreon.com/posts/hole-hit-so-hard-158266558"
+        },
+        {
           "name": "Celebrity Skin",
           "videoId": "RS81K6CJwxo",
           "watchUrl": "https://youtube.com/watch?v=RS81K6CJwxo",
@@ -15584,6 +15590,42 @@
           "videoId": null,
           "watchUrl": null,
           "tabUrl": "https://www.patreon.com/posts/jason-isbell-400-46040835"
+        }
+      ]
+    },
+    {
+      "name": "Jawbox",
+      "slug": "v-jawbox",
+      "songs": [
+        {
+          "name": "Cornflake Girl (Tori Amos cover)",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/jawbox-cornflake-157639921"
+        }
+      ]
+    },
+    {
+      "name": "Jawbox (Tori Amos Cover)",
+      "slug": "v-jawbox--tori-amos-cover-",
+      "songs": [
+        {
+          "name": "Cornflake Girl",
+          "videoId": "eLM41TMWXT8",
+          "watchUrl": "https://youtube.com/watch?v=eLM41TMWXT8",
+          "tabUrl": null
+        }
+      ]
+    },
+    {
+      "name": "Jerry Cantrell",
+      "slug": "v-jerry-cantrell",
+      "songs": [
+        {
+          "name": "Villified Cover With",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/jerry-cantrell-113098363"
         }
       ]
     },
@@ -15802,6 +15844,12 @@
       "slug": "v-metallica",
       "songs": [
         {
+          "name": "Nothing Else Matters",
+          "videoId": "ids6YkixLlM",
+          "watchUrl": "https://youtube.com/watch?v=ids6YkixLlM",
+          "tabUrl": "https://www.patreon.com/posts/metallica-else-158890425"
+        },
+        {
           "name": "Battery",
           "videoId": "y-hHaiEM3Pk",
           "watchUrl": "https://youtube.com/watch?v=y-hHaiEM3Pk",
@@ -15830,6 +15878,18 @@
           "videoId": null,
           "watchUrl": null,
           "tabUrl": "https://www.patreon.com/posts/michael-sembello-102541073"
+        }
+      ]
+    },
+    {
+      "name": "More",
+      "slug": "v-more",
+      "songs": [
+        {
+          "name": "editing....Metallica",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/more-editing-158809038"
         }
       ]
     },
@@ -15948,6 +16008,18 @@
       ]
     },
     {
+      "name": "Nirvana",
+      "slug": "v-nirvana",
+      "songs": [
+        {
+          "name": "Man Who Sold The World",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/nirvana-man-who-30111609"
+        }
+      ]
+    },
+    {
       "name": "Nirvana / Foo Fighters",
       "slug": "v-nirvana---foo-fighters",
       "songs": [
@@ -16050,6 +16122,84 @@
       ]
     },
     {
+      "name": "Pearl Jam",
+      "slug": "v-pearl-jam",
+      "songs": [
+        {
+          "name": "Meaningless",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-guitar-155625530"
+        },
+        {
+          "name": "Puzzles and Games",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-and-127668246"
+        },
+        {
+          "name": "Words Out Of Place",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-words-99192638"
+        },
+        {
+          "name": "Betterman",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-live-93769927"
+        },
+        {
+          "name": "TABs!",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-tabs-59041598"
+        },
+        {
+          "name": "Evolution",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-tab-52293228"
+        },
+        {
+          "name": "Vitalogy",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-tabs-51584788"
+        },
+        {
+          "name": "Gigaton",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-entire-49225458"
+        },
+        {
+          "name": "Know Your Rights",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-know-48004259"
+        },
+        {
+          "name": "Open D",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-open-d-47061793"
+        },
+        {
+          "name": "Faithful",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-middle-41417046"
+        },
+        {
+          "name": "“Go” - Mike's Parts (",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-go-tab-26619592"
+        }
+      ]
+    },
+    {
       "name": "Pearl Jam (MTV Unplugged Version)",
       "slug": "v-pearl-jam--mtv-unplugged-version-",
       "songs": [
@@ -16136,6 +16286,30 @@
           "videoId": "uPqlE9p-zxA",
           "watchUrl": "https://youtube.com/watch?v=uPqlE9p-zxA",
           "tabUrl": null
+        }
+      ]
+    },
+    {
+      "name": "Radiohead",
+      "slug": "v-radiohead",
+      "songs": [
+        {
+          "name": "Everything In It's Right Place",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/radiohead-in-its-150979559"
+        },
+        {
+          "name": "Street Spirit",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/radiohead-street-46607810"
+        },
+        {
+          "name": "High & Dry",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/radiohead-high-46164112"
         }
       ]
     },
@@ -16274,6 +16448,24 @@
           "videoId": "9VIol3o1xXU",
           "watchUrl": "https://youtube.com/watch?v=9VIol3o1xXU",
           "tabUrl": "https://www.patreon.com/posts/soul-asylum-tab-37653597"
+        }
+      ]
+    },
+    {
+      "name": "Soundgarden",
+      "slug": "v-soundgarden",
+      "songs": [
+        {
+          "name": "Fresh Tendrills",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/soundgarden-tab-135249566"
+        },
+        {
+          "name": "Mail Man",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/soundgarden-mail-36395962"
         }
       ]
     },
