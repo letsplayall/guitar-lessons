@@ -1,18 +1,18 @@
 {
-  "exportedAt": "2026-08-18T16:55:41.371Z",
+  "exportedAt": "2026-05-29T08:56:49.924Z",
   "stats": {
-    "totalVideos": 1104,
-    "coveredSongs": 508,
+    "totalVideos": 1077,
+    "coveredSongs": 503,
     "totalSongs": 1928,
-    "variousSongs": 186
+    "variousSongs": 199
   },
   "bands": [
     {
       "name": "Pearl Jam",
       "slug": "pearl-jam",
-      "coveredCount": 147,
+      "coveredCount": 146,
       "totalCount": 194,
-      "coveragePct": 76,
+      "coveragePct": 75,
       "albums": [
         {
           "name": "Ten (1991)",
@@ -820,8 +820,8 @@
             {
               "name": "Yellow Ledbetter",
               "covered": true,
-              "videoId": "RnltbiwxJoM",
-              "watchUrl": "https://youtube.com/watch?v=RnltbiwxJoM",
+              "videoId": "__MLENMREP8",
+              "watchUrl": "https://youtube.com/watch?v=__MLENMREP8",
               "tabUrl": "https://www.patreon.com/posts/pearl-jam-yellow-60800636"
             },
             {
@@ -933,7 +933,7 @@
         },
         {
           "name": "Pearl Jam (2006)",
-          "coveredCount": 11,
+          "coveredCount": 10,
           "totalCount": 13,
           "songs": [
             {
@@ -987,10 +987,10 @@
             },
             {
               "name": "Big Wave",
-              "covered": true,
-              "videoId": "7NGTsJL5Wew",
-              "watchUrl": "https://youtube.com/watch?v=7NGTsJL5Wew",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/pearl-jam-big-162291067"
+              "covered": false,
+              "videoId": null,
+              "watchUrl": null,
+              "tabUrl": null
             },
             {
               "name": "Gone",
@@ -1394,8 +1394,8 @@
             {
               "name": "State of Love and Trust",
               "covered": true,
-              "videoId": "Vr7aVlUAlLE",
-              "watchUrl": "https://youtube.com/watch?v=Vr7aVlUAlLE",
+              "videoId": "4g5ZY-8QQCM",
+              "watchUrl": "https://youtube.com/watch?v=4g5ZY-8QQCM",
               "tabUrl": "https://www.patreon.com/posts/pearl-jam-state-147498897"
             },
             {
@@ -1408,8 +1408,8 @@
             {
               "name": "Yellow Ledbetter",
               "covered": true,
-              "videoId": "RnltbiwxJoM",
-              "watchUrl": "https://youtube.com/watch?v=RnltbiwxJoM",
+              "videoId": "__MLENMREP8",
+              "watchUrl": "https://youtube.com/watch?v=__MLENMREP8",
               "tabUrl": "https://www.patreon.com/posts/pearl-jam-yellow-60800636"
             },
             {
@@ -1615,7 +1615,7 @@
               "covered": false,
               "videoId": null,
               "watchUrl": null,
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/nirvana-mtv-tab-42927927"
+              "tabUrl": "https://www.patreon.com/posts/nirvana-mtv-tab-42927927"
             },
             {
               "name": "Territorial Pissings",
@@ -1811,7 +1811,7 @@
               "covered": false,
               "videoId": null,
               "watchUrl": null,
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/nirvana-mtv-tab-42927927"
+              "tabUrl": "https://www.patreon.com/posts/nirvana-mtv-tab-42927927"
             },
             {
               "name": "On a Plain",
@@ -2217,8 +2217,8 @@
             {
               "name": "Sludge Factory",
               "covered": true,
-              "videoId": "rXlTgwq-uLA",
-              "watchUrl": "https://youtube.com/watch?v=rXlTgwq-uLA",
+              "videoId": "KLAo-ncBfIk",
+              "watchUrl": "https://youtube.com/watch?v=KLAo-ncBfIk",
               "tabUrl": "https://www.patreon.com/posts/alice-in-chains-44231637"
             },
             {
@@ -2240,7 +2240,7 @@
               "covered": true,
               "videoId": "SxMUKWJVeTU",
               "watchUrl": "https://youtube.com/watch?v=SxMUKWJVeTU",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/alice-in-chains-157323433"
+              "tabUrl": "https://www.patreon.com/posts/alice-in-chains-157323433"
             },
             {
               "name": "Shame in You",
@@ -2564,9 +2564,9 @@
     {
       "name": "Soundgarden",
       "slug": "soundgarden",
-      "coveredCount": 27,
+      "coveredCount": 26,
       "totalCount": 81,
-      "coveragePct": 33,
+      "coveragePct": 32,
       "albums": [
         {
           "name": "Ultramega OK (1988)",
@@ -2851,7 +2851,7 @@
               "covered": true,
               "videoId": "IVkXVLkVDuw",
               "watchUrl": "https://youtube.com/watch?v=IVkXVLkVDuw",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/soundgarden-let-155549042"
+              "tabUrl": "https://www.patreon.com/posts/soundgarden-let-155549042"
             },
             {
               "name": "My Wave",
@@ -2955,7 +2955,7 @@
         },
         {
           "name": "Down on the Upside (1996)",
-          "coveredCount": 4,
+          "coveredCount": 3,
           "totalCount": 16,
           "songs": [
             {
@@ -2967,10 +2967,10 @@
             },
             {
               "name": "Rhinosaur",
-              "covered": true,
-              "videoId": "-t__xKdWP98",
-              "watchUrl": "https://youtube.com/watch?v=-t__xKdWP98",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/soundgarden-tab-165184570"
+              "covered": false,
+              "videoId": null,
+              "watchUrl": null,
+              "tabUrl": null
             },
             {
               "name": "Zero Chance",
@@ -4262,7 +4262,7 @@
               "covered": false,
               "videoId": null,
               "watchUrl": null,
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/smashing-hummer-46121822"
+              "tabUrl": "https://www.patreon.com/posts/smashing-hummer-46121822"
             },
             {
               "name": "A Punchup at a Wedding",
@@ -4537,13 +4537,13 @@
     {
       "name": "Foo Fighters",
       "slug": "foo-fighters",
-      "coveredCount": 32,
+      "coveredCount": 30,
       "totalCount": 137,
-      "coveragePct": 23,
+      "coveragePct": 22,
       "albums": [
         {
           "name": "Foo Fighters (1995)",
-          "coveredCount": 6,
+          "coveredCount": 5,
           "totalCount": 12,
           "songs": [
             {
@@ -4590,10 +4590,10 @@
             },
             {
               "name": "Weenie Beenie",
-              "covered": true,
-              "videoId": "FOvAf9tpo9A",
-              "watchUrl": "https://youtube.com/watch?v=FOvAf9tpo9A",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/foo-fighters-tab-159798547"
+              "covered": false,
+              "videoId": null,
+              "watchUrl": null,
+              "tabUrl": null
             },
             {
               "name": "Oh, George",
@@ -4656,7 +4656,7 @@
               "covered": true,
               "videoId": "FljN0L56f3g",
               "watchUrl": "https://youtube.com/watch?v=FljN0L56f3g",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/this-weeks-tab-88237994"
+              "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-88237994"
             },
             {
               "name": "My Poor Brain",
@@ -5509,15 +5509,15 @@
         },
         {
           "name": "Your Favorite Toy (2026)",
-          "coveredCount": 2,
+          "coveredCount": 1,
           "totalCount": 10,
           "songs": [
             {
               "name": "Caught in the Echo",
-              "covered": true,
-              "videoId": "umgBkiA9oVA",
-              "watchUrl": "https://youtube.com/watch?v=umgBkiA9oVA",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/foo-fighters-in-160319362"
+              "covered": false,
+              "videoId": null,
+              "watchUrl": null,
+              "tabUrl": null
             },
             {
               "name": "Of All People",
@@ -5638,7 +5638,7 @@
               "covered": true,
               "videoId": "6MKitBx2IJA",
               "watchUrl": "https://youtube.com/watch?v=6MKitBx2IJA",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/queens-of-stone-156176512"
+              "tabUrl": "https://www.patreon.com/posts/queens-of-stone-156176512"
             },
             {
               "name": "Mexicola",
@@ -5939,7 +5939,7 @@
               "covered": true,
               "videoId": "QPhqWq40TsA",
               "watchUrl": "https://youtube.com/watch?v=QPhqWq40TsA",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/this-weeks-tab-54392863"
+              "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-54392863"
             },
             {
               "name": "I Never Came",
@@ -11768,9 +11768,9 @@
     {
       "name": "Jerry Cantrell",
       "slug": "jerry-cantrell",
-      "coveredCount": 6,
+      "coveredCount": 5,
       "totalCount": 44,
-      "coveragePct": 14,
+      "coveragePct": 11,
       "albums": [
         {
           "name": "Boggy Depot (1998)",
@@ -11865,7 +11865,7 @@
         },
         {
           "name": "Degradation Trip (2002)",
-          "coveredCount": 1,
+          "coveredCount": 0,
           "totalCount": 14,
           "songs": [
             {
@@ -11884,10 +11884,10 @@
             },
             {
               "name": "Anger Rising",
-              "covered": true,
-              "videoId": "0bPQwFkojno",
-              "watchUrl": "https://youtube.com/watch?v=0bPQwFkojno",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/jerry-cantrell-164374190"
+              "covered": false,
+              "videoId": null,
+              "watchUrl": null,
+              "tabUrl": null
             },
             {
               "name": "Angel Eyes",
@@ -13088,7 +13088,7 @@
               "covered": true,
               "videoId": "jdcnpKKJusM",
               "watchUrl": "https://youtube.com/watch?v=jdcnpKKJusM",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/blind-melon-tab-135768396"
+              "tabUrl": "https://www.patreon.com/posts/blind-melon-tab-135768396"
             },
             {
               "name": "Seed to a Tree",
@@ -13179,7 +13179,7 @@
               "covered": true,
               "videoId": "LsMElJTvBPP_HwyP",
               "watchUrl": "https://youtube.com/watch?v=LsMElJTvBPP_HwyP",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/this-weeks-tab-103661835"
+              "tabUrl": "https://www.patreon.com/posts/this-weeks-tab-103661835"
             },
             {
               "name": "The Duke",
@@ -13228,7 +13228,7 @@
               "covered": true,
               "videoId": "rK12oXiCTkA",
               "watchUrl": "https://youtube.com/watch?v=rK12oXiCTkA",
-              "tabUrl": "https://www.patreon.com/letsplayall/posts/blind-melon-tab-112801610"
+              "tabUrl": "https://www.patreon.com/posts/blind-melon-tab-112801610"
             },
             {
               "name": "Hell",
@@ -15318,18 +15318,6 @@
       ]
     },
     {
-      "name": "Further",
-      "slug": "v-further",
-      "songs": [
-        {
-          "name": "Gimme Indie Fox",
-          "videoId": "6pYp27IMxlY",
-          "watchUrl": "https://youtube.com/watch?v=6pYp27IMxlY",
-          "tabUrl": null
-        }
-      ]
-    },
-    {
       "name": "Gin Blossoms",
       "slug": "v-gin-blossoms",
       "songs": [
@@ -15433,7 +15421,7 @@
           "name": "Hit So Hard",
           "videoId": "pQnHsxkTvrU",
           "watchUrl": "https://youtube.com/watch?v=pQnHsxkTvrU",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/hole-hit-so-hard-158266558"
         },
         {
           "name": "Celebrity Skin",
@@ -15447,12 +15435,6 @@
       "name": "Hum",
       "slug": "v-hum",
       "songs": [
-        {
-          "name": "If You Are To Bloom",
-          "videoId": "yZKurlKIbbw",
-          "watchUrl": "https://youtube.com/watch?v=yZKurlKIbbw",
-          "tabUrl": null
-        },
         {
           "name": "The Pod",
           "videoId": "-_2GkwlAPS0",
@@ -15598,6 +15580,12 @@
       "slug": "v-jason-isbell---the-400-unit",
       "songs": [
         {
+          "name": "Honeysuckle Blue",
+          "videoId": "8GzhIPUhtt8",
+          "watchUrl": "https://youtube.com/watch?v=8GzhIPUhtt8",
+          "tabUrl": null
+        },
+        {
           "name": "Only Children",
           "videoId": null,
           "watchUrl": null,
@@ -15606,14 +15594,14 @@
       ]
     },
     {
-      "name": "Jason Isbell & The 400 Unit (Drivin N Cryin Cover)",
-      "slug": "v-jason-isbell---the-400-unit--drivin-n-cryin-cover-",
+      "name": "Jawbox",
+      "slug": "v-jawbox",
       "songs": [
         {
-          "name": "Honeysuckle Blue",
-          "videoId": "8GzhIPUhtt8",
-          "watchUrl": "https://youtube.com/watch?v=8GzhIPUhtt8",
-          "tabUrl": null
+          "name": "Cornflake Girl (Tori Amos cover)",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/jawbox-cornflake-157639921"
         }
       ]
     },
@@ -15626,6 +15614,18 @@
           "videoId": "eLM41TMWXT8",
           "watchUrl": "https://youtube.com/watch?v=eLM41TMWXT8",
           "tabUrl": null
+        }
+      ]
+    },
+    {
+      "name": "Jerry Cantrell",
+      "slug": "v-jerry-cantrell",
+      "songs": [
+        {
+          "name": "Villified Cover With",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/jerry-cantrell-113098363"
         }
       ]
     },
@@ -15844,16 +15844,10 @@
       "slug": "v-metallica",
       "songs": [
         {
-          "name": "For Whom The Bell Tolls",
-          "videoId": "LbxviUIcaLg",
-          "watchUrl": "https://youtube.com/watch?v=LbxviUIcaLg",
-          "tabUrl": null
-        },
-        {
           "name": "Nothing Else Matters",
           "videoId": "ids6YkixLlM",
           "watchUrl": "https://youtube.com/watch?v=ids6YkixLlM",
-          "tabUrl": null
+          "tabUrl": "https://www.patreon.com/posts/metallica-else-158890425"
         },
         {
           "name": "Battery",
@@ -15888,6 +15882,18 @@
       ]
     },
     {
+      "name": "More",
+      "slug": "v-more",
+      "songs": [
+        {
+          "name": "editing....Metallica",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/more-editing-158809038"
+        }
+      ]
+    },
+    {
       "name": "Mr Big",
       "slug": "v-mr-big",
       "songs": [
@@ -15903,12 +15909,6 @@
       "name": "Mudhoney",
       "slug": "v-mudhoney",
       "songs": [
-        {
-          "name": "Suck You Dry",
-          "videoId": "lU3R2KJUH-c",
-          "watchUrl": "https://youtube.com/watch?v=lU3R2KJUH-c",
-          "tabUrl": null
-        },
         {
           "name": "I Like It Small",
           "videoId": "3qtOqw1Bg2E",
@@ -15927,12 +15927,6 @@
       "name": "Muse",
       "slug": "v-muse",
       "songs": [
-        {
-          "name": "The Handler",
-          "videoId": "EHNFaJ1DneQ",
-          "watchUrl": "https://youtube.com/watch?v=EHNFaJ1DneQ",
-          "tabUrl": null
-        },
         {
           "name": "Micro Cuts",
           "videoId": "AICGT2R6mOQ",
@@ -16010,6 +16004,18 @@
           "videoId": "LpwTNE_uchA",
           "watchUrl": "https://youtube.com/watch?v=LpwTNE_uchA",
           "tabUrl": null
+        }
+      ]
+    },
+    {
+      "name": "Nirvana",
+      "slug": "v-nirvana",
+      "songs": [
+        {
+          "name": "Man Who Sold The World",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/nirvana-man-who-30111609"
         }
       ]
     },
@@ -16092,18 +16098,6 @@
       ]
     },
     {
-      "name": "One More Satellite",
-      "slug": "v-one-more-satellite",
-      "songs": [
-        {
-          "name": "Paper Over The Cracks",
-          "videoId": "YN7ZZ7UgDkU",
-          "watchUrl": "https://youtube.com/watch?v=YN7ZZ7UgDkU",
-          "tabUrl": null
-        }
-      ]
-    },
-    {
       "name": "PANIC! AT THE DISCO",
       "slug": "v-panic--at-the-disco",
       "songs": [
@@ -16124,6 +16118,84 @@
           "videoId": "0HlbW7mJDws",
           "watchUrl": "https://youtube.com/watch?v=0HlbW7mJDws",
           "tabUrl": "https://www.patreon.com/posts/pantera-walk-tab-140922947"
+        }
+      ]
+    },
+    {
+      "name": "Pearl Jam",
+      "slug": "v-pearl-jam",
+      "songs": [
+        {
+          "name": "Meaningless",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-guitar-155625530"
+        },
+        {
+          "name": "Puzzles and Games",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-and-127668246"
+        },
+        {
+          "name": "Words Out Of Place",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-words-99192638"
+        },
+        {
+          "name": "Betterman",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-live-93769927"
+        },
+        {
+          "name": "TABs!",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-tabs-59041598"
+        },
+        {
+          "name": "Evolution",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-tab-52293228"
+        },
+        {
+          "name": "Vitalogy",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-tabs-51584788"
+        },
+        {
+          "name": "Gigaton",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-entire-49225458"
+        },
+        {
+          "name": "Know Your Rights",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-know-48004259"
+        },
+        {
+          "name": "Open D",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-open-d-47061793"
+        },
+        {
+          "name": "Faithful",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-middle-41417046"
+        },
+        {
+          "name": "“Go” - Mike's Parts (",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/pearl-jam-go-tab-26619592"
         }
       ]
     },
@@ -16214,6 +16286,30 @@
           "videoId": "uPqlE9p-zxA",
           "watchUrl": "https://youtube.com/watch?v=uPqlE9p-zxA",
           "tabUrl": null
+        }
+      ]
+    },
+    {
+      "name": "Radiohead",
+      "slug": "v-radiohead",
+      "songs": [
+        {
+          "name": "Everything In It's Right Place",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/radiohead-in-its-150979559"
+        },
+        {
+          "name": "Street Spirit",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/radiohead-street-46607810"
+        },
+        {
+          "name": "High & Dry",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/radiohead-high-46164112"
         }
       ]
     },
@@ -16356,6 +16452,24 @@
       ]
     },
     {
+      "name": "Soundgarden",
+      "slug": "v-soundgarden",
+      "songs": [
+        {
+          "name": "Fresh Tendrills",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/soundgarden-tab-135249566"
+        },
+        {
+          "name": "Mail Man",
+          "videoId": null,
+          "watchUrl": null,
+          "tabUrl": "https://www.patreon.com/posts/soundgarden-mail-36395962"
+        }
+      ]
+    },
+    {
       "name": "Stone Gossard",
       "slug": "v-stone-gossard",
       "songs": [
@@ -16363,18 +16477,6 @@
           "name": "Remain",
           "videoId": "BVMkyn3mKLY",
           "watchUrl": "https://youtube.com/watch?v=BVMkyn3mKLY",
-          "tabUrl": null
-        }
-      ]
-    },
-    {
-      "name": "Suede",
-      "slug": "v-suede",
-      "songs": [
-        {
-          "name": "Trash",
-          "videoId": "a_Hura9nIpo",
-          "watchUrl": "https://youtube.com/watch?v=a_Hura9nIpo",
           "tabUrl": null
         }
       ]
@@ -16754,18 +16856,6 @@
           "videoId": "zQxYBg8NifM",
           "watchUrl": "https://youtube.com/watch?v=zQxYBg8NifM",
           "tabUrl": "https://www.patreon.com/posts/viagra-boys-man-138615470"
-        }
-      ]
-    },
-    {
-      "name": "Violet Grohl",
-      "slug": "v-violet-grohl",
-      "songs": [
-        {
-          "name": "Bug In The Cake",
-          "videoId": "MYyTdmKoHAc",
-          "watchUrl": "https://youtube.com/watch?v=MYyTdmKoHAc",
-          "tabUrl": null
         }
       ]
     },
